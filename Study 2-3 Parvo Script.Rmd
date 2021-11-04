@@ -417,4 +417,6 @@ WGSP12_bind <- rbind(WGSP12_S1PARVOc,WGSP12_S2PARVOc,WGSP12_S3PARVOc,WGSP12_S4PA
 Study2PARVOBIND <- rbind(WGSP01_bind,WGSP02_bind,WGSP04_bind,WGSP06_bind,WGSP07_bind,WGSP09_bind,WGSP12_bind)
 ```
 
-
+```{r}
+write.csv(Study2PARVOBIND,"C:\\Users\\thoma\\OneDrive - Murdoch University\\Desktop\\PhD 2021\\Study 2 and 3\\AAADATA\\Main CSV sheets\\RAW_PARVO_DATA(04-11-2021).csv",row.names=FALSE)
+```
