@@ -173,7 +173,11 @@ WGSP04_S4HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Deskto
 ```{r}
 WGSP04_S2HR <- WGSP04_S2HR%>%
   mutate(session = 2)%>%
-  mutate(participant = "P4")
+  mutate(participant = "P4")%>%
+  mutate(BFR = "YES")%>%
+  mutate(AOP = 102)%>%
+  mutate(speed = "SW")%>%
+  mutate(km_h = 5.3)
 WGSP04_S2HR$session <- as.factor(WGSP04_S2HR$session)
 WGSP04_S2HR$secs <- as_hms(WGSP04_S2HR$secs)
 WGSP04_S2HR = subset(WGSP04_S2HR,select = -c(cad,km,kph,nm,watts,alt,lon,lat,headwind,slope,temp,interval,lrbalance,lte,rte,lps,rps,smo2,thb,o2hb,hhb))
@@ -187,7 +191,11 @@ WGSP04_S2HR$secs <- as.numeric(WGSP04_S2HR$secs)
 ```{r}
 WGSP04_S3HR <- WGSP04_S3HR%>%
   mutate(session = 3)%>%
-  mutate(participant = "P4")
+  mutate(participant = "P4")%>%
+  mutate(BFR = "NO")%>%
+  mutate(AOP = 0)%>%
+  mutate(speed = "SW")%>%
+  mutate(km_h = 5.3)
 WGSP04_S3HR$session <- as.factor(WGSP04_S3HR$session)
 WGSP04_S3HR$secs <- as_hms(WGSP04_S3HR$secs)
 WGSP04_S3HR = subset(WGSP04_S3HR,select = -c(cad,km,kph,nm,watts,alt,lon,lat,headwind,slope,temp,interval,lrbalance,lte,rte,lps,rps,smo2,thb,o2hb,hhb))
@@ -202,7 +210,11 @@ WGSP04_S3HR$secs <- as.numeric(WGSP04_S3HR$secs)
 ```{r}
 WGSP04_S4HR <- WGSP04_S4HR%>%
   mutate(session = 4)%>%
-  mutate(participant = "P4")
+  mutate(participant = "P4")%>%
+  mutate(BFR = "YES")%>%
+  mutate(AOP = 102)%>%
+  mutate(speed = "FW")%>%
+  mutate(km_h = 6.8)
 WGSP04_S4HR$session <- as.factor(WGSP04_S4HR$session)
 WGSP04_S4HR$secs <- as_hms(WGSP04_S4HR$secs)
 WGSP04_S4HR = subset(WGSP04_S4HR,select = -c(cad,km,kph,nm,watts,alt,lon,lat,headwind,slope,temp,interval,lrbalance,lte,rte,lps,rps,smo2,thb,o2hb,hhb))
@@ -214,7 +226,11 @@ WGSP04_S4HR$secs <- as.numeric(WGSP04_S4HR$secs)
 ```
 
 ```{r}
-WGSP04_HR <- rbind(WGSP04_S2HR,WGSP04_S3HR,WGSP04_S4HR)
+WGSP04_HR <- rbind(WGSP04_S2HR,WGSP04_S3HR,WGSP04_S4HR)%>%
+  mutate(age = 29)%>%
+  mutate(sex = "female")%>%
+  mutate(HRMAX = (211-(0.64*age)))%>%
+  mutate(PerHRMAX = ((hr/HRMAX)*100))
 ```
 
 #WGSP06
