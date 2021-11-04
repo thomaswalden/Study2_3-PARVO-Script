@@ -1,0 +1,461 @@
+#WGSP01
+```{r}
+WGSP01_S2HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP01//Session2//Parvo//GARMIN_S2.CSV")
+WGSP01_S3HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP01//Session3//Parvo//GARMIN_S3.CSV")
+WGSP01_S4HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP01//Session4//Parvo//GARMIN_S4.CSV")
+```
+##SESSION 2
+```{r}
+WGSP01_S2HR <- WGSP01_S2HR%>%
+  mutate(session = 2)%>%
+  mutate(participant = "P1")
+WGSP01_S2HR$session <- as.factor(WGSP01_S2HR$session)
+WGSP01_S2HR$secs <- as_hms(WGSP01_S2HR$secs)
+WGSP01_S2HR = subset(WGSP01_S2HR,select = -c(cad,km,kph,nm,watts,alt,lon,lat,headwind,slope,temp,interval,lrbalance,lte,rte,lps,rps,smo2,thb,o2hb,hhb))
+WGSP01_S2HR$secs <- as.character(WGSP01_S2HR$secs)
+WGSP01_S2HR$secs <- gsub(":", ".", WGSP01_S2HR$secs, perl=TRUE)
+WGSP01_S2HR$secs <- stri_sub(WGSP01_S2HR$secs,4)
+WGSP01_S2HR$secs <- as.numeric(WGSP01_S2HR$secs)
+```
+
+##SESSION 3
+```{r}
+WGSP01_S3HR <- WGSP01_S3HR%>%
+  mutate(session = 3)%>%
+  mutate(participant = "P1")
+WGSP01_S3HR$session <- as.factor(WGSP01_S3HR$session)
+WGSP01_S3HR$secs <- as_hms(WGSP01_S3HR$secs)
+WGSP01_S3HR = subset(WGSP01_S3HR,select = -c(cad,km,kph,nm,watts,alt,lon,lat,headwind,slope,temp,interval,lrbalance,lte,rte,lps,rps,smo2,thb,o2hb,hhb))
+WGSP01_S3HR$secs <- as.character(WGSP01_S3HR$secs)
+WGSP01_S3HR$secs <- gsub(":", ".", WGSP01_S3HR$secs, perl=TRUE)
+WGSP01_S3HR$secs <- stri_sub(WGSP01_S3HR$secs,4)
+WGSP01_S3HR$secs <- as.numeric(WGSP01_S3HR$secs)
+```
+
+##SESSION 4
+```{r}
+WGSP01_S4HR <- WGSP01_S4HR%>%
+  mutate(session = 4)%>%
+  mutate(participant = "P1")
+WGSP01_S4HR$session <- as.factor(WGSP01_S4HR$session)
+WGSP01_S4HR$secs <- as_hms(WGSP01_S4HR$secs)
+WGSP01_S4HR = subset(WGSP01_S4HR,select = -c(cad,km,kph,nm,watts,alt,lon,lat,headwind,slope,temp,interval,lrbalance,lte,rte,lps,rps,smo2,thb,o2hb,hhb))
+WGSP01_S4HR$secs <- as.character(WGSP01_S4HR$secs)
+WGSP01_S4HR$secs <- gsub(":", ".", WGSP01_S4HR$secs, perl=TRUE)
+WGSP01_S4HR$secs <- stri_sub(WGSP01_S4HR$secs,4)
+WGSP01_S4HR$secs <- as.numeric(WGSP01_S4HR$secs)
+```
+
+```{r}
+WGSP01_HR <- rbind(WGSP01_S2HR,WGSP01_S3HR,WGSP01_S4HR)
+```
+
+#WGSP02
+```{r}
+WGSP02_S1HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP02//Session1//Parvo//GARMIN_S1.CSV")
+WGSP02_S2HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP02//Session2//Parvo//GARMIN_S2.CSV")
+WGSP02_S3HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP02//Session3//Parvo//GARMIN_S3.CSV")
+WGSP02_S4HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP02//Session4//Parvo//GARMIN_S4.CSV")
+```
+
+##SESSION 1
+```{r}
+WGSP02_S1HR <- WGSP02_S1HR%>%
+  mutate(session = 1)%>%
+  mutate(participant = "P2")
+WGSP02_S1HR$session <- as.factor(WGSP02_S1HR$session)
+WGSP02_S1HR$secs <- as_hms(WGSP02_S1HR$secs)
+WGSP02_S1HR = subset(WGSP02_S1HR,select = -c(cad,km,kph,nm,watts,alt,lon,lat,headwind,slope,temp,interval,lrbalance,lte,rte,lps,rps,smo2,thb,o2hb,hhb))
+WGSP02_S1HR$secs <- as.character(WGSP02_S1HR$secs)
+WGSP02_S1HR$secs <- gsub(":", ".", WGSP02_S1HR$secs, perl=TRUE)
+WGSP02_S1HR$secs <- stri_sub(WGSP02_S1HR$secs,4)
+WGSP02_S1HR$secs <- as.numeric(WGSP02_S1HR$secs)
+```
+
+##SESSION 2
+```{r}
+WGSP02_S2HR <- WGSP02_S2HR%>%
+  mutate(session = 2)%>%
+  mutate(participant = "P2")
+WGSP02_S2HR$session <- as.factor(WGSP02_S2HR$session)
+WGSP02_S2HR$secs <- as_hms(WGSP02_S2HR$secs)
+WGSP02_S2HR = subset(WGSP02_S2HR,select = -c(cad,km,kph,nm,watts,alt,lon,lat,headwind,slope,temp,interval,lrbalance,lte,rte,lps,rps,smo2,thb,o2hb,hhb))
+WGSP02_S2HR$secs <- as.character(WGSP02_S2HR$secs)
+WGSP02_S2HR$secs <- gsub(":", ".", WGSP02_S2HR$secs, perl=TRUE)
+WGSP02_S2HR$secs <- stri_sub(WGSP02_S2HR$secs,4)
+WGSP02_S2HR$secs <- as.numeric(WGSP02_S2HR$secs)
+
+```
+
+##SESSION 3
+```{r}
+WGSP02_S3HR <- WGSP02_S3HR%>%
+  mutate(session = 3)%>%
+  mutate(participant = "P2")
+WGSP02_S3HR$session <- as.factor(WGSP02_S3HR$session)
+WGSP02_S3HR$secs <- as_hms(WGSP02_S3HR$secs)
+WGSP02_S3HR = subset(WGSP02_S3HR,select = -c(cad,km,kph,nm,watts,alt,lon,lat,headwind,slope,temp,interval,lrbalance,lte,rte,lps,rps,smo2,thb,o2hb,hhb))
+WGSP02_S3HR$secs <- as.character(WGSP02_S3HR$secs)
+WGSP02_S3HR$secs <- gsub(":", ".", WGSP02_S3HR$secs, perl=TRUE)
+WGSP02_S3HR$secs <- stri_sub(WGSP02_S3HR$secs,4)
+WGSP02_S3HR$secs <- as.numeric(WGSP02_S3HR$secs)
+
+```
+
+##SESSION 4
+```{r}
+WGSP02_S4HR <- WGSP02_S4HR%>%
+  mutate(session = 4)%>%
+  mutate(participant = "P2")
+WGSP02_S4HR$session <- as.factor(WGSP02_S4HR$session)
+WGSP02_S4HR$secs <- as_hms(WGSP02_S4HR$secs)
+WGSP02_S4HR = subset(WGSP02_S4HR,select = -c(cad,km,kph,nm,watts,alt,lon,lat,headwind,slope,temp,interval,lrbalance,lte,rte,lps,rps,smo2,thb,o2hb,hhb))
+WGSP02_S4HR$secs <- as.character(WGSP02_S4HR$secs)
+WGSP02_S4HR$secs <- gsub(":", ".", WGSP02_S4HR$secs, perl=TRUE)
+WGSP02_S4HR$secs <- stri_sub(WGSP02_S4HR$secs,4)
+WGSP02_S4HR$secs <- as.numeric(WGSP02_S4HR$secs)
+
+```
+
+```{r}
+WGSP02_HR <- rbind(WGSP02_S1HR, WGSP02_S2HR,WGSP02_S3HR,WGSP02_S4HR)
+```
+
+#WGSP03
+
+
+#WGSP04
+```{r}
+WGSP04_S2HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP04//Session2//Parvo//GARMIN_S2.CSV")
+WGSP04_S3HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP04//Session3//Parvo//GARMIN_S3.CSV")
+WGSP04_S4HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP04//Session4//Parvo//GARMIN_S4.CSV")
+```
+##SESSION 2
+```{r}
+WGSP04_S2HR <- WGSP04_S2HR%>%
+  mutate(session = 2)%>%
+  mutate(participant = "P4")
+WGSP04_S2HR$session <- as.factor(WGSP04_S2HR$session)
+WGSP04_S2HR$secs <- as_hms(WGSP04_S2HR$secs)
+WGSP04_S2HR = subset(WGSP04_S2HR,select = -c(cad,km,kph,nm,watts,alt,lon,lat,headwind,slope,temp,interval,lrbalance,lte,rte,lps,rps,smo2,thb,o2hb,hhb))
+WGSP04_S2HR$secs <- as.character(WGSP04_S2HR$secs)
+WGSP04_S2HR$secs <- gsub(":", ".", WGSP04_S2HR$secs, perl=TRUE)
+WGSP04_S2HR$secs <- stri_sub(WGSP04_S2HR$secs,4)
+WGSP04_S2HR$secs <- as.numeric(WGSP04_S2HR$secs)
+```
+
+##SESSION 3
+```{r}
+WGSP04_S3HR <- WGSP04_S3HR%>%
+  mutate(session = 3)%>%
+  mutate(participant = "P4")
+WGSP04_S3HR$session <- as.factor(WGSP04_S3HR$session)
+WGSP04_S3HR$secs <- as_hms(WGSP04_S3HR$secs)
+WGSP04_S3HR = subset(WGSP04_S3HR,select = -c(cad,km,kph,nm,watts,alt,lon,lat,headwind,slope,temp,interval,lrbalance,lte,rte,lps,rps,smo2,thb,o2hb,hhb))
+WGSP04_S3HR$secs <- as.character(WGSP04_S3HR$secs)
+WGSP04_S3HR$secs <- gsub(":", ".", WGSP04_S3HR$secs, perl=TRUE)
+WGSP04_S3HR$secs <- stri_sub(WGSP04_S3HR$secs,4)
+WGSP04_S3HR$secs <- as.numeric(WGSP04_S3HR$secs)
+
+```
+
+##SESSION 4
+```{r}
+WGSP04_S4HR <- WGSP04_S4HR%>%
+  mutate(session = 4)%>%
+  mutate(participant = "P4")
+WGSP04_S4HR$session <- as.factor(WGSP04_S4HR$session)
+WGSP04_S4HR$secs <- as_hms(WGSP04_S4HR$secs)
+WGSP04_S4HR = subset(WGSP04_S4HR,select = -c(cad,km,kph,nm,watts,alt,lon,lat,headwind,slope,temp,interval,lrbalance,lte,rte,lps,rps,smo2,thb,o2hb,hhb))
+WGSP04_S4HR$secs <- as.character(WGSP04_S4HR$secs)
+WGSP04_S4HR$secs <- gsub(":", ".", WGSP04_S4HR$secs, perl=TRUE)
+WGSP04_S4HR$secs <- stri_sub(WGSP04_S4HR$secs,4)
+WGSP04_S4HR$secs <- as.numeric(WGSP04_S4HR$secs)
+
+```
+
+```{r}
+WGSP04_HR <- rbind(WGSP04_S2HR,WGSP04_S3HR,WGSP04_S4HR)
+```
+
+#WGSP06
+```{r}
+WGSP06_S2HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP06//Session2//Parvo//GARMIN_S2.CSV")
+WGSP06_S3HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP06//Session3//Parvo//GARMIN_S3.CSV")
+WGSP06_S4HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP06//Session4//Parvo//GARMIN_S4.CSV")
+```
+
+
+##SESSION 2
+```{r}
+WGSP06_S2HR <- WGSP06_S2HR%>%
+  mutate(session = 2)%>%
+  mutate(participant = "P2")
+WGSP06_S2HR$session <- as.factor(WGSP06_S2HR$session)
+WGSP06_S2HR$secs <- as_hms(WGSP06_S2HR$secs)
+WGSP06_S2HR = subset(WGSP06_S2HR,select = -c(cad,km,kph,nm,watts,alt,lon,lat,headwind,slope,temp,interval,lrbalance,lte,rte,lps,rps,smo2,thb,o2hb,hhb))
+WGSP06_S2HR$secs <- as.character(WGSP06_S2HR$secs)
+WGSP06_S2HR$secs <- gsub(":", ".", WGSP06_S2HR$secs, perl=TRUE)
+WGSP06_S2HR$secs <- stri_sub(WGSP06_S2HR$secs,4)
+WGSP06_S2HR$secs <- as.numeric(WGSP06_S2HR$secs)
+
+```
+
+##SESSION 3
+```{r}
+WGSP06_S3HR <- WGSP06_S3HR%>%
+  mutate(session = 3)%>%
+  mutate(participant = "P2")
+WGSP06_S3HR$session <- as.factor(WGSP06_S3HR$session)
+WGSP06_S3HR$secs <- as_hms(WGSP06_S3HR$secs)
+WGSP06_S3HR = subset(WGSP06_S3HR,select = -c(cad,km,kph,nm,watts,alt,lon,lat,headwind,slope,temp,interval,lrbalance,lte,rte,lps,rps,smo2,thb,o2hb,hhb))
+WGSP06_S3HR$secs <- as.character(WGSP06_S3HR$secs)
+WGSP06_S3HR$secs <- gsub(":", ".", WGSP06_S3HR$secs, perl=TRUE)
+WGSP06_S3HR$secs <- stri_sub(WGSP06_S3HR$secs,4)
+WGSP06_S3HR$secs <- as.numeric(WGSP06_S3HR$secs)
+
+```
+
+##SESSION 4
+```{r}
+WGSP06_S4HR <- WGSP06_S4HR%>%
+  mutate(session = 4)%>%
+  mutate(participant = "P2")
+WGSP06_S4HR$session <- as.factor(WGSP06_S4HR$session)
+WGSP06_S4HR$secs <- as_hms(WGSP06_S4HR$secs)
+WGSP06_S4HR = subset(WGSP06_S4HR,select = -c(cad,km,kph,nm,watts,alt,lon,lat,headwind,slope,temp,interval,lrbalance,lte,rte,lps,rps,smo2,thb,o2hb,hhb))
+WGSP06_S4HR$secs <- as.character(WGSP06_S4HR$secs)
+WGSP06_S4HR$secs <- gsub(":", ".", WGSP06_S4HR$secs, perl=TRUE)
+WGSP06_S4HR$secs <- stri_sub(WGSP06_S4HR$secs,4)
+WGSP06_S4HR$secs <- as.numeric(WGSP06_S4HR$secs)
+
+```
+
+```{r}
+WGSP06_HR <- rbind(WGSP06_S2HR,WGSP06_S3HR,WGSP06_S4HR)
+```
+
+#WGSP07
+```{r}
+WGSP07_S1HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP07//Session1//Parvo//GARMIN_S1.CSV")
+WGSP07_S2HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP07//Session2//Parvo//GARMIN_S2.CSV")
+WGSP07_S3HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP07//Session3//Parvo//GARMIN_S3.CSV")
+WGSP07_S4HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP07//Session4//Parvo//GARMIN_S4.CSV")
+```
+
+##SESSION 1
+```{r}
+WGSP07_S1HR <- WGSP07_S1HR%>%
+  mutate(session = 2)%>%
+  mutate(participant = "P2")
+WGSP07_S1HR$session <- as.factor(WGSP07_S1HR$session)
+WGSP07_S1HR$secs <- as_hms(WGSP07_S1HR$secs)
+WGSP07_S1HR = subset(WGSP07_S1HR,select = -c(cad,km,kph,nm,watts,alt,lon,lat,headwind,slope,temp,interval,lrbalance,lte,rte,lps,rps,smo2,thb,o2hb,hhb))
+WGSP07_S1HR$secs <- as.character(WGSP07_S1HR$secs)
+WGSP07_S1HR$secs <- gsub(":", ".", WGSP07_S1HR$secs, perl=TRUE)
+WGSP07_S1HR$secs <- stri_sub(WGSP07_S1HR$secs,4)
+WGSP07_S1HR$secs <- as.numeric(WGSP07_S1HR$secs)
+
+```
+
+##SESSION 2
+```{r}
+WGSP07_S2HR <- WGSP07_S2HR%>%
+  mutate(session = 2)%>%
+  mutate(participant = "P2")
+WGSP07_S2HR$session <- as.factor(WGSP07_S2HR$session)
+WGSP07_S2HR$secs <- as_hms(WGSP07_S2HR$secs)
+WGSP07_S2HR = subset(WGSP07_S2HR,select = -c(cad,km,kph,nm,watts,alt,lon,lat,headwind,slope,temp,interval,lrbalance,lte,rte,lps,rps,smo2,thb,o2hb,hhb))
+WGSP07_S2HR$secs <- as.character(WGSP07_S2HR$secs)
+WGSP07_S2HR$secs <- gsub(":", ".", WGSP07_S2HR$secs, perl=TRUE)
+WGSP07_S2HR$secs <- stri_sub(WGSP07_S2HR$secs,4)
+WGSP07_S2HR$secs <- as.numeric(WGSP07_S2HR$secs)
+
+```
+
+##SESSION 3
+```{r}
+WGSP07_S3HR <- WGSP07_S3HR%>%
+  mutate(session = 3)%>%
+  mutate(participant = "P2")
+WGSP07_S3HR$session <- as.factor(WGSP07_S3HR$session)
+WGSP07_S3HR$secs <- as_hms(WGSP07_S3HR$secs)
+WGSP07_S3HR = subset(WGSP07_S3HR,select = -c(cad,km,kph,nm,watts,alt,lon,lat,headwind,slope,temp,interval,lrbalance,lte,rte,lps,rps,smo2,thb,o2hb,hhb))
+WGSP07_S3HR$secs <- as.character(WGSP07_S3HR$secs)
+WGSP07_S3HR$secs <- gsub(":", ".", WGSP07_S3HR$secs, perl=TRUE)
+WGSP07_S3HR$secs <- stri_sub(WGSP07_S3HR$secs,4)
+WGSP07_S3HR$secs <- as.numeric(WGSP07_S3HR$secs)
+
+```
+
+##SESSION 4
+```{r}
+WGSP07_S4HR <- WGSP07_S4HR%>%
+  mutate(session = 4)%>%
+  mutate(participant = "P2")
+WGSP07_S4HR$session <- as.factor(WGSP07_S4HR$session)
+WGSP07_S4HR$secs <- as_hms(WGSP07_S4HR$secs)
+WGSP07_S4HR = subset(WGSP07_S4HR,select = -c(cad,km,kph,nm,watts,alt,lon,lat,headwind,slope,temp,interval,lrbalance,lte,rte,lps,rps,smo2,thb,o2hb,hhb))
+WGSP07_S4HR$secs <- as.character(WGSP07_S4HR$secs)
+WGSP07_S4HR$secs <- gsub(":", ".", WGSP07_S4HR$secs, perl=TRUE)
+WGSP07_S4HR$secs <- stri_sub(WGSP07_S4HR$secs,4)
+WGSP07_S4HR$secs <- as.numeric(WGSP07_S4HR$secs)
+
+```
+
+```{r}
+WGSP07_HR <- rbind(WGSP07_S1HR, WGSP07_S2HR,WGSP07_S3HR,WGSP07_S4HR)
+```
+
+#WGSP09
+```{r}
+WGSP09_S1HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP09//Session1//Parvo//GARMIN_S1.CSV")
+WGSP09_S2HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP09//Session2//Parvo//GARMIN_S2.CSV")
+WGSP09_S3HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP09//Session3//Parvo//GARMIN_S3.CSV")
+WGSP09_S4HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP09//Session4//Parvo//GARMIN_S4.CSV")
+```
+
+##SESSION 1
+```{r}
+WGSP09_S1HR <- WGSP09_S1HR%>%
+  mutate(session = 2)%>%
+  mutate(participant = "P2")
+WGSP09_S1HR$session <- as.factor(WGSP09_S1HR$session)
+WGSP09_S1HR$secs <- as_hms(WGSP09_S1HR$secs)
+WGSP09_S1HR = subset(WGSP09_S1HR,select = -c(cad,km,kph,nm,watts,alt,lon,lat,headwind,slope,temp,interval,lrbalance,lte,rte,lps,rps,smo2,thb,o2hb,hhb))
+WGSP09_S1HR$secs <- as.character(WGSP09_S1HR$secs)
+WGSP09_S1HR$secs <- gsub(":", ".", WGSP09_S1HR$secs, perl=TRUE)
+WGSP09_S1HR$secs <- stri_sub(WGSP09_S1HR$secs,4)
+WGSP09_S1HR$secs <- as.numeric(WGSP09_S1HR$secs)
+
+```
+
+##SESSION 2
+```{r}
+WGSP09_S2HR <- WGSP09_S2HR%>%
+  mutate(session = 2)%>%
+  mutate(participant = "P2")
+WGSP09_S2HR$session <- as.factor(WGSP09_S2HR$session)
+WGSP09_S2HR$secs <- as_hms(WGSP09_S2HR$secs)
+WGSP09_S2HR = subset(WGSP09_S2HR,select = -c(cad,km,kph,nm,watts,alt,lon,lat,headwind,slope,temp,interval,lrbalance,lte,rte,lps,rps,smo2,thb,o2hb,hhb))
+WGSP09_S2HR$secs <- as.character(WGSP09_S2HR$secs)
+WGSP09_S2HR$secs <- gsub(":", ".", WGSP09_S2HR$secs, perl=TRUE)
+WGSP09_S2HR$secs <- stri_sub(WGSP09_S2HR$secs,4)
+WGSP09_S2HR$secs <- as.numeric(WGSP09_S2HR$secs)
+
+```
+
+##SESSION 3
+```{r}
+WGSP09_S3HR <- WGSP09_S3HR%>%
+  mutate(session = 3)%>%
+  mutate(participant = "P2")
+WGSP09_S3HR$session <- as.factor(WGSP09_S3HR$session)
+WGSP09_S3HR$secs <- as_hms(WGSP09_S3HR$secs)
+WGSP09_S3HR = subset(WGSP09_S3HR,select = -c(cad,km,kph,nm,watts,alt,lon,lat,headwind,slope,temp,interval,lrbalance,lte,rte,lps,rps,smo2,thb,o2hb,hhb))
+WGSP09_S3HR$secs <- as.character(WGSP09_S3HR$secs)
+WGSP09_S3HR$secs <- gsub(":", ".", WGSP09_S3HR$secs, perl=TRUE)
+WGSP09_S3HR$secs <- stri_sub(WGSP09_S3HR$secs,4)
+WGSP09_S3HR$secs <- as.numeric(WGSP09_S3HR$secs)
+
+```
+
+##SESSION 4
+```{r}
+WGSP09_S4HR <- WGSP09_S4HR%>%
+  mutate(session = 4)%>%
+  mutate(participant = "P2")
+WGSP09_S4HR$session <- as.factor(WGSP09_S4HR$session)
+WGSP09_S4HR$secs <- as_hms(WGSP09_S4HR$secs)
+WGSP09_S4HR = subset(WGSP09_S4HR,select = -c(cad,km,kph,nm,watts,alt,lon,lat,headwind,slope,temp,interval,lrbalance,lte,rte,lps,rps,smo2,thb,o2hb,hhb))
+WGSP09_S4HR$secs <- as.character(WGSP09_S4HR$secs)
+WGSP09_S4HR$secs <- gsub(":", ".", WGSP09_S4HR$secs, perl=TRUE)
+WGSP09_S4HR$secs <- stri_sub(WGSP09_S4HR$secs,4)
+WGSP09_S4HR$secs <- as.numeric(WGSP09_S4HR$secs)
+
+```
+
+```{r}
+WGSP09_HR <- rbind(WGSP09_S1HR, WGSP09_S2HR,WGSP09_S3HR,WGSP09_S4HR)
+```
+
+#WGSP012
+```{r}
+WGSP12_S1HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP12//Session1//Parvo//GARMIN_S1.CSV")
+WGSP12_S2HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP12//Session2//Parvo//GARMIN_S2.CSV")
+WGSP12_S3HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP12//Session3//Parvo//GARMIN_S3.CSV")
+WGSP12_S4HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP12//Session4//Parvo//GARMIN_S4.CSV")
+```
+
+##SESSION 1
+```{r}
+WGSP12_S1HR <- WGSP12_S1HR%>%
+  mutate(session = 2)%>%
+  mutate(participant = "P2")
+WGSP12_S1HR$session <- as.factor(WGSP12_S1HR$session)
+WGSP12_S1HR$secs <- as_hms(WGSP12_S1HR$secs)
+WGSP12_S1HR = subset(WGSP12_S1HR,select = -c(cad,km,kph,nm,watts,alt,lon,lat,headwind,slope,temp,interval,lrbalance,lte,rte,lps,rps,smo2,thb,o2hb,hhb))
+WGSP12_S1HR$secs <- as.character(WGSP12_S1HR$secs)
+WGSP12_S1HR$secs <- gsub(":", ".", WGSP12_S1HR$secs, perl=TRUE)
+WGSP12_S1HR$secs <- stri_sub(WGSP12_S1HR$secs,4)
+WGSP12_S1HR$secs <- as.numeric(WGSP12_S1HR$secs)
+
+```
+
+##SESSION 2
+```{r}
+WGSP12_S2HR <- WGSP12_S2HR%>%
+  mutate(session = 2)%>%
+  mutate(participant = "P2")
+WGSP12_S2HR$session <- as.factor(WGSP12_S2HR$session)
+WGSP12_S2HR$secs <- as_hms(WGSP12_S2HR$secs)
+WGSP12_S2HR = subset(WGSP12_S2HR,select = -c(cad,km,kph,nm,watts,alt,lon,lat,headwind,slope,temp,interval,lrbalance,lte,rte,lps,rps,smo2,thb,o2hb,hhb))
+WGSP12_S2HR$secs <- as.character(WGSP12_S2HR$secs)
+WGSP12_S2HR$secs <- gsub(":", ".", WGSP12_S2HR$secs, perl=TRUE)
+WGSP12_S2HR$secs <- stri_sub(WGSP12_S2HR$secs,4)
+WGSP12_S2HR$secs <- as.numeric(WGSP12_S2HR$secs)
+
+```
+
+##SESSION 3
+```{r}
+WGSP12_S3HR <- WGSP12_S3HR%>%
+  mutate(session = 3)%>%
+  mutate(participant = "P2")
+WGSP12_S3HR$session <- as.factor(WGSP12_S3HR$session)
+WGSP12_S3HR$secs <- as_hms(WGSP12_S3HR$secs)
+WGSP12_S3HR = subset(WGSP12_S3HR,select = -c(cad,km,kph,nm,watts,alt,lon,lat,headwind,slope,temp,interval,lrbalance,lte,rte,lps,rps,smo2,thb,o2hb,hhb))
+WGSP12_S3HR$secs <- as.character(WGSP12_S3HR$secs)
+WGSP12_S3HR$secs <- gsub(":", ".", WGSP12_S3HR$secs, perl=TRUE)
+WGSP12_S3HR$secs <- stri_sub(WGSP12_S3HR$secs,4)
+WGSP12_S3HR$secs <- as.numeric(WGSP12_S3HR$secs)
+
+```
+
+##SESSION 4
+```{r}
+WGSP12_S4HR <- WGSP12_S4HR%>%
+  mutate(session = 4)%>%
+  mutate(participant = "P2")
+WGSP12_S4HR$session <- as.factor(WGSP12_S4HR$session)
+WGSP12_S4HR$secs <- as_hms(WGSP12_S4HR$secs)
+WGSP12_S4HR = subset(WGSP12_S4HR,select = -c(cad,km,kph,nm,watts,alt,lon,lat,headwind,slope,temp,interval,lrbalance,lte,rte,lps,rps,smo2,thb,o2hb,hhb))
+WGSP12_S4HR$secs <- as.character(WGSP12_S4HR$secs)
+WGSP12_S4HR$secs <- gsub(":", ".", WGSP12_S4HR$secs, perl=TRUE)
+WGSP12_S4HR$secs <- stri_sub(WGSP12_S4HR$secs,4)
+WGSP12_S4HR$secs <- as.numeric(WGSP12_S4HR$secs)
+
+```
+
+```{r}
+WGSP12_HR <- rbind(WGSP12_S1HR, WGSP12_S2HR,WGSP12_S3HR,WGSP12_S4HR)
+```
+
+
+
+#Main Data Sheet
+```{r}
+HRBIND <- rbind(WGSP01_HR,WGSP02_HR,WGSP04_HR,WGSP06_HR,WGSP07_HR,WGSP09_HR,WGSP12_HR)
+```
+
+
