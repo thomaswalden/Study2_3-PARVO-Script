@@ -1,3 +1,4 @@
+#EDIT FROM GITHUB
 #WGSP01
 ```{r}
 WGSP01_S2HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP01//Session2//Parvo//GARMIN_S2.CSV")
