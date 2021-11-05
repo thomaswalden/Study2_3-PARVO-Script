@@ -592,3 +592,9 @@ HRBIND <- rbind(WGSP01_HR,WGSP02_HR,WGSP04_HR,WGSP06_HR,WGSP07_HR,WGSP09_HR,WGSP
 write.csv(HRBIND,"C:\\Users\\thoma\\OneDrive - Murdoch University\\Desktop\\PhD 2021\\Study 2 and 3\\AAADATA\\Main CSV sheets\\RAW_HR_DATA(04-11-2021).csv",row.names=FALSE)
 ```
 
+#Summary
+```{r}
+HRSUM <- HRBIND%>%
+summarySE(measurevar = "hr", groupvar =c("speed","BFR","participant"), na.rm = TRUE, conf.interval = 0.95, .drop = TRUE)
+```
+
