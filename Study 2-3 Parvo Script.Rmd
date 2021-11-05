@@ -420,3 +420,10 @@ Study2PARVOBIND <- rbind(WGSP01_bind,WGSP02_bind,WGSP04_bind,WGSP06_bind,WGSP07_
 ```{r}
 write.csv(Study2PARVOBIND,"C:\\Users\\thoma\\OneDrive - Murdoch University\\Desktop\\PhD 2021\\Study 2 and 3\\AAADATA\\Main CSV sheets\\RAW_PARVO_DATA(04-11-2021).csv",row.names=FALSE)
 ```
+
+#Summary
+```{r}
+VESUM <- Study2PARVOBIND%>%
+summarySE(measurevar = "VE", groupvar =c("speed","BFR","participant"), na.rm = TRUE, conf.interval = 0.95, .drop = TRUE)
+```
+
