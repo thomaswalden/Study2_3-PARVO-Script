@@ -767,7 +767,7 @@ WGSP12_HR <- rbind(WGSP12_S1HR, WGSP12_S2HR,WGSP12_S3HR,WGSP12_S4HR)%>%
   mutate(PerHRMAX = ((hr/HRMAX)*100))
 ```
 
-#WGSP012
+#WGSP013
 ```{r}
 WGSP13_S1HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP13//Session1//Parvo//GARMIN_S1.CSV")
 WGSP13_S2HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP13//Session2//Parvo//GARMIN_S2.CSV")
