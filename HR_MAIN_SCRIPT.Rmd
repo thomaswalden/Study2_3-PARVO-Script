@@ -767,9 +767,101 @@ WGSP12_HR <- rbind(WGSP12_S1HR, WGSP12_S2HR,WGSP12_S3HR,WGSP12_S4HR)%>%
   mutate(PerHRMAX = ((hr/HRMAX)*100))
 ```
 
+#WGSP012
+```{r}
+WGSP13_S1HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP13//Session1//Parvo//GARMIN_S1.CSV")
+WGSP13_S2HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP13//Session2//Parvo//GARMIN_S2.CSV")
+WGSP13_S3HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP13//Session3//Parvo//GARMIN_S3.CSV")
+WGSP13_S4HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP13//Session4//Parvo//GARMIN_S4.CSV")
+```
+
+##SESSION 1
+```{r}
+WGSP13_S1HR <- WGSP13_S1HR%>%
+  mutate(session = 1)%>%
+  mutate(participant = "P13")%>%
+  mutate(BFR = "YES")%>%
+  mutate(AOP = 96)%>%
+  mutate(speed = "SW")%>%
+  mutate(km_h = 5.1)
+WGSP13_S1HR$session <- as.factor(WGSP13_S1HR$session)
+WGSP13_S1HR$secs <- as_hms(WGSP13_S1HR$secs)
+WGSP13_S1HR = subset(WGSP13_S1HR,select = -c(cad,km,kph,nm,watts,alt,lon,lat,headwind,slope,temp,interval,lrbalance,lte,rte,lps,rps,smo2,thb,o2hb,hhb))
+WGSP13_S1HR$secs <- as.character(WGSP13_S1HR$secs)
+WGSP13_S1HR$secs <- gsub(":", ".", WGSP13_S1HR$secs, perl=TRUE)
+WGSP13_S1HR$secs <- stri_sub(WGSP13_S1HR$secs,4)
+WGSP13_S1HR$secs <- as.numeric(WGSP13_S1HR$secs)
+
+```
+
+##SESSION 2
+```{r}
+WGSP13_S2HR <- WGSP13_S2HR%>%
+  mutate(session = 2)%>%
+  mutate(participant = "P13")%>%
+  mutate(BFR = "NO")%>%
+  mutate(AOP = 0)%>%
+  mutate(speed = "SW")%>%
+  mutate(km_h = 5.1)
+WGSP13_S2HR$session <- as.factor(WGSP13_S2HR$session)
+WGSP13_S2HR$secs <- as_hms(WGSP13_S2HR$secs)
+WGSP13_S2HR = subset(WGSP13_S2HR,select = -c(cad,km,kph,nm,watts,alt,lon,lat,headwind,slope,temp,interval,lrbalance,lte,rte,lps,rps,smo2,thb,o2hb,hhb))
+WGSP13_S2HR$secs <- as.character(WGSP13_S2HR$secs)
+WGSP13_S2HR$secs <- gsub(":", ".", WGSP13_S2HR$secs, perl=TRUE)
+WGSP13_S2HR$secs <- stri_sub(WGSP13_S2HR$secs,4)
+WGSP13_S2HR$secs <- as.numeric(WGSP13_S2HR$secs)
+
+```
+
+##SESSION 3
+```{r}
+WGSP13_S3HR <- WGSP13_S3HR%>%
+  mutate(session = 3)%>%
+  mutate(participant = "P13")%>%
+  mutate(BFR = "YES")%>%
+  mutate(AOP = 96)%>%
+  mutate(speed = "FW")%>%
+  mutate(km_h = 6.6)
+WGSP13_S3HR$session <- as.factor(WGSP13_S3HR$session)
+WGSP13_S3HR$secs <- as_hms(WGSP13_S3HR$secs)
+WGSP13_S3HR = subset(WGSP13_S3HR,select = -c(cad,km,kph,nm,watts,alt,lon,lat,headwind,slope,temp,interval,lrbalance,lte,rte,lps,rps,smo2,thb,o2hb,hhb))
+WGSP13_S3HR$secs <- as.character(WGSP13_S3HR$secs)
+WGSP13_S3HR$secs <- gsub(":", ".", WGSP13_S3HR$secs, perl=TRUE)
+WGSP13_S3HR$secs <- stri_sub(WGSP13_S3HR$secs,4)
+WGSP13_S3HR$secs <- as.numeric(WGSP13_S3HR$secs)
+
+```
+
+##SESSION 4
+```{r}
+WGSP13_S4HR <- WGSP13_S4HR%>%
+  mutate(session = 4)%>%
+  mutate(participant = "P13")%>%
+  mutate(BFR = "NO")%>%
+  mutate(AOP = 0)%>%
+  mutate(speed = "FW")%>%
+  mutate(km_h = 6.6)
+WGSP13_S4HR$session <- as.factor(WGSP13_S4HR$session)
+WGSP13_S4HR$secs <- as_hms(WGSP13_S4HR$secs)
+WGSP13_S4HR = subset(WGSP13_S4HR,select = -c(cad,km,kph,nm,watts,alt,lon,lat,headwind,slope,temp,interval,lrbalance,lte,rte,lps,rps,smo2,thb,o2hb,hhb))
+WGSP13_S4HR$secs <- as.character(WGSP13_S4HR$secs)
+WGSP13_S4HR$secs <- gsub(":", ".", WGSP13_S4HR$secs, perl=TRUE)
+WGSP13_S4HR$secs <- stri_sub(WGSP13_S4HR$secs,4)
+WGSP13_S4HR$secs <- as.numeric(WGSP13_S4HR$secs)
+
+```
+
+```{r}
+WGSP13_HR <- rbind(WGSP13_S1HR, WGSP13_S2HR,WGSP13_S3HR,WGSP13_S4HR)%>%
+   mutate(age = 32)%>%
+  mutate(sex = "male")%>%
+  mutate(HRMAX = (211-(0.64*age)))%>%
+  mutate(PerHRMAX = ((hr/HRMAX)*100))
+```
+
 #Main Data Sheet
 ```{r}
-HRBIND <- rbind(WGSP01_HR,WGSP02_HR,WGSP03_HR,WGSP04_HR,WGSP06_HR,WGSP07_HR,WGSP08_HR,WGSP09_HR,WGSP12_HR)
+HRBIND <- rbind(WGSP01_HR,WGSP02_HR,WGSP03_HR,WGSP04_HR,WGSP06_HR,WGSP07_HR,WGSP08_HR,WGSP09_HR,WGSP12_HR,WGSP13_HR)
 ```
 
 ```{r}
