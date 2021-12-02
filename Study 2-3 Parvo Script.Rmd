@@ -589,10 +589,68 @@ WGSP13_bind <- rbind(WGSP13_S1PARVOc,WGSP13_S2PARVOc,WGSP13_S3PARVOc,WGSP13_S4PA
   mutate(sex = "male")
 ```
 
+#WGSP15
+```{r}
+WGSP15_S1PARVO <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP15//Session1//Parvo//WGSP015_S1.csv")
+WGSP15_S2PARVO <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP15//Session2//Parvo//WGSP015_S2.csv")
+WGSP15_S3PARVO <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP15//Session3//Parvo//WGSP015_S3.csv")
+WGSP15_S4PARVO <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP15//Session4//Parvo//WGSP015_S4.csv")
+```
+
+##Session 1
+```{r}
+WGSP15_S1PARVOc <- WGSP15_S1PARVO%>%
+  mutate(session = 1)%>%
+  mutate(participant = "P15")%>%
+  mutate(BFR = "YES")%>%
+  mutate(AOP = 114)%>%
+  mutate(speed = "FW")%>%
+  mutate(km_h = 6.3)
+  
+```
+
+##Session 2
+```{r}
+WGSP15_S2PARVOc <- WGSP15_S2PARVO%>%
+  mutate(session = 2)%>%
+  mutate(participant = "P15")%>%
+  mutate(BFR = "NO")%>%
+  mutate(AOP = 0)%>%
+  mutate(speed = "FW")%>%
+  mutate(km_h = 6.3)
+```
+
+##Session 3
+```{r}
+WGSP15_S3PARVOc <- WGSP15_S3PARVO%>%
+  mutate(session = 3)%>%
+  mutate(participant = "P15")%>%
+  mutate(BFR = "YES")%>%
+  mutate(AOP = 114)%>%
+  mutate(speed = "SW")%>%
+  mutate(km_h = 4.9)
+```
+
+##Session 4
+```{r}
+WGSP15_S4PARVOc <- WGSP15_S4PARVO%>%
+  mutate(session = 4)%>%
+  mutate(participant = "P15")%>%
+  mutate(BFR = "NO")%>%
+  mutate(AOP = 0)%>%
+  mutate(speed = "SW")%>%
+  mutate(km_h = 4.9)
+```
+
+```{r}
+WGSP15_bind <- rbind(WGSP15_S1PARVOc,WGSP15_S2PARVOc,WGSP15_S3PARVOc,WGSP15_S4PARVOc)%>%
+  mutate(age = 28)%>%
+  mutate(sex = "male")
+```
 
 ##Study Bind
 ```{r}
-Study2PARVOBIND <- rbind(WGSP01_bind,WGSP02_bind,WGSP03_bind,WGSP04_bind,WGSP06_bind,WGSP07_bind,WGSP08_bind,WGSP09_bind,WGSP12_bind,WGSP13_bind)
+Study2PARVOBIND <- rbind(WGSP01_bind,WGSP02_bind,WGSP03_bind,WGSP04_bind,WGSP06_bind,WGSP07_bind,WGSP08_bind,WGSP09_bind,WGSP12_bind,WGSP13_bind,WGSP15_bind)
 ```
 
 ```{r}
