@@ -1,0 +1,96 @@
+----
+Cardiorespiratory Data (06-12-2021)
+N = 12
+**All data currently includes rest, warm-up and exercise periods**
+----
+
+```{r libraries, echo=FALSE,include=FALSE}
+library(Rmisc) #tidying data
+library(tidyverse) #tidying data
+library(lattice) #tidying data
+library(dplyr)
+library(ggplot2) #plotting
+library(dplyr) #fixing time stamps
+library(forcats)
+library(lme4)
+library(cowplot)
+library(ggpubr)
+library(emmeans)
+library(gt)
+library(glue)
+library(jtools)
+library(sjmisc)
+library(sjPlot)
+library(FinCal)
+library(plyr)
+library(data.table)
+library(Rcpp)
+library(zoo)
+library(hrbrthemes)
+library(patchwork)
+library(mmtable2)
+library(stringi)
+library(lmerTest)
+library(hms)
+library(rmarkdown)
+library(knitr)
+```
+
+```{r data, echo=FALSE}
+HRmd <- read.csv("C:\\Users\\thoma\\OneDrive - Murdoch University\\Desktop\\PhD 2021\\Study 2 and 3\\AAADATA\\Main CSV sheets\\RAW_HR_DATA(06-12-2021).csv")
+PARVOmd <- read.csv("C:\\Users\\thoma\\OneDrive - Murdoch University\\Desktop\\PhD 2021\\Study 2 and 3\\AAADATA\\Main CSV sheets\\RAW_PARVO_DATA(06-12-2021).csv")
+
+```
+**Part 1 - Garmin**
+
+*Heart Rate*
+```{r,echo=FALSE, warning=FALSE}
+#summary(HRmd)
+HRSUM <- HRmd%>%
+summarySE(measurevar = "hr", groupvar =c("speed","BFR"), na.rm = TRUE, conf.interval = 0.95, .drop = TRUE)
+HRSUM
+
+histogram(HRmd$hr)
+
+HRSUMplot <- HRmd%>%
+summarySE(measurevar = "hr", groupvar =c("speed","BFR","participant","km_h"), na.rm = TRUE, conf.interval = 0.95, .drop = TRUE)
+
+#basic.lm <- lm(hr ~ km_h, data = HRmd)
+
+
+#HRplot <- ggplot(HRSUMplot,aes(x= km_h, y= hr))+
+          #geom_point(aes(colour = BFR))+
+          #geom_smooth(method = "lm")
+
+#HRplot
+
+```
+
+**Part 2 - PARVO**
+
+*Minute Ventilation*
+```{r, echo=FALSE}
+#summary(PARVOmd)
+VESUM <- PARVOmd%>%
+  summarySE(measurevar = "VE", groupvar =c("speed","BFR"), na.rm = TRUE, conf.interval = 0.95, .drop = TRUE)
+VESUM
+histogram(PARVOmd$VE)
+```
+
+*Respiration Rate*
+```{r, echo=FALSE}
+RRSUM <- PARVOmd%>%
+  summarySE(measurevar = "RR", groupvar =c("speed","BFR"), na.rm = TRUE, conf.interval = 0.95, .drop = TRUE)
+RRSUM
+histogram(PARVOmd$RR)
+```
+
+*Fraction of Carbon Dioxide*
+```{r, echo=FALSE}
+FECO2SUM <- PARVOmd%>%
+  summarySE(measurevar = "FECO2", groupvar =c("speed","BFR"), na.rm = TRUE, conf.interval = 0.95, .drop = TRUE)
+FECO2SUM
+histogram(PARVOmd$FECO2)
+
+```
+
