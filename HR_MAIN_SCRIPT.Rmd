@@ -1,12 +1,12 @@
-#EDIT FROM GITHUB
+#Garmin Data
 #WGSP01
-```{r}
+```{r WGSP01,echo=FALSE}
 WGSP01_S2HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP01//Session2//Parvo//GARMIN_S2.CSV")
 WGSP01_S3HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP01//Session3//Parvo//GARMIN_S3.CSV")
 WGSP01_S4HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP01//Session4//Parvo//GARMIN_S4.CSV")
 ```
 ##SESSION 2
-```{r}
+```{r, echo=FALSE}
 WGSP01_S2HR <- WGSP01_S2HR%>%
   mutate(session = 2)%>%
   mutate(participant = "P1")%>%
@@ -24,7 +24,7 @@ WGSP01_S2HR$secs <- as.numeric(WGSP01_S2HR$secs)
 ```
 
 ##SESSION 3
-```{r}
+```{r, echo=FALSE}
 WGSP01_S3HR <- WGSP01_S3HR%>%
   mutate(session = 3)%>%
   mutate(participant = "P1")%>%
@@ -42,7 +42,7 @@ WGSP01_S3HR$secs <- as.numeric(WGSP01_S3HR$secs)
 ```
 
 ##SESSION 4
-```{r}
+```{r, echo=FALSE}
 WGSP01_S4HR <- WGSP01_S4HR%>%
   mutate(session = 4)%>%
   mutate(participant = "P1")%>%
@@ -59,7 +59,7 @@ WGSP01_S4HR$secs <- stri_sub(WGSP01_S4HR$secs,4)
 WGSP01_S4HR$secs <- as.numeric(WGSP01_S4HR$secs)
 ```
 
-```{r}
+```{r, P1 Bind, echo=FALSE}
 WGSP01_HR <- rbind(WGSP01_S2HR,WGSP01_S3HR,WGSP01_S4HR)%>%
   mutate(age = 26)%>%
   mutate(sex = "male")%>%
@@ -69,7 +69,7 @@ WGSP01_HR <- rbind(WGSP01_S2HR,WGSP01_S3HR,WGSP01_S4HR)%>%
 ```
 
 #WGSP02
-```{r}
+```{r, echo=FALSE}
 WGSP02_S1HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP02//Session1//Parvo//GARMIN_S1.CSV")
 WGSP02_S2HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP02//Session2//Parvo//GARMIN_S2.CSV")
 WGSP02_S3HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP02//Session3//Parvo//GARMIN_S3.CSV")
@@ -77,7 +77,7 @@ WGSP02_S4HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Deskto
 ```
 
 ##SESSION 1
-```{r}
+```{r, echo=FALSE}
 WGSP02_S1HR <- WGSP02_S1HR%>%
   mutate(session = 1)%>%
   mutate(participant = "P2")%>%
@@ -95,7 +95,7 @@ WGSP02_S1HR$secs <- as.numeric(WGSP02_S1HR$secs)
 ```
 
 ##SESSION 2
-```{r}
+```{r, echo=FALSE}
 WGSP02_S2HR <- WGSP02_S2HR%>%
   mutate(session = 2)%>%
   mutate(participant = "P2")%>%
@@ -114,7 +114,7 @@ WGSP02_S2HR$secs <- as.numeric(WGSP02_S2HR$secs)
 ```
 
 ##SESSION 3
-```{r}
+```{r, echo=FALSE}
 WGSP02_S3HR <- WGSP02_S3HR%>%
   mutate(session = 3)%>%
   mutate(participant = "P2")%>%
@@ -133,7 +133,7 @@ WGSP02_S3HR$secs <- as.numeric(WGSP02_S3HR$secs)
 ```
 
 ##SESSION 4
-```{r}
+```{r, echo=FALSE}
 WGSP02_S4HR <- WGSP02_S4HR%>%
   mutate(session = 4)%>%
   mutate(participant = "P2")%>%
@@ -151,13 +151,12 @@ WGSP02_S4HR$secs <- as.numeric(WGSP02_S4HR$secs)
 
 ```
 
-```{r}
+```{r, echo=FALSE}
 WGSP02_HR <- rbind(WGSP02_S1HR, WGSP02_S2HR,WGSP02_S3HR,WGSP02_S4HR)%>%
   mutate(age = 25)%>%
   mutate(sex = "male")%>%
   mutate(HRMAX = (211-(0.64*age)))%>%
   mutate(PerHRMAX = ((hr/HRMAX)*100))
-
 
 ```
 
@@ -1048,12 +1047,10 @@ WGSP15_HR <- rbind(WGSP15_S1HR, WGSP15_S2HR,WGSP15_S3HR,WGSP15_S4HR)%>%
 HRBIND <- rbind(WGSP01_HR,WGSP02_HR,WGSP03_HR,WGSP04_HR,WGSP06_HR,WGSP07_HR,WGSP08_HR,WGSP09_HR,WGSP11_HR,WGSP12_HR,WGSP13_HR,WGSP15_HR)
 ```
 
-```{r}
-write.csv(HRBIND,"C:\\Users\\thoma\\OneDrive - Murdoch University\\Desktop\\PhD 2021\\Study 2 and 3\\AAADATA\\Main CSV sheets\\RAW_HR_DATA(06-12-2021).csv",row.names=FALSE)
-```
-
 #Summary
 ```{r}
 HRSUM <- HRBIND%>%
 summarySE(measurevar = "hr", groupvar =c("speed","BFR","participant"), na.rm = TRUE, conf.interval = 0.95, .drop = TRUE)
+
+HRSUM
 ```
