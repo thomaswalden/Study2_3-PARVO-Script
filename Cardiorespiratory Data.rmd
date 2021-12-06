@@ -53,16 +53,18 @@ HRSUM
 histogram(HRmd$hr)
 
 HRSUMplot <- HRmd%>%
-summarySE(measurevar = "hr", groupvar =c("speed","BFR","participant","km_h"), na.rm = TRUE, conf.interval = 0.95, .drop = TRUE)
+summarySE(measurevar = "hr", groupvar =c("speed","BFR"), na.rm = TRUE, conf.interval = 0.95, .drop = TRUE)
 
 #basic.lm <- lm(hr ~ km_h, data = HRmd)
 
 
-#HRplot <- ggplot(HRSUMplot,aes(x= km_h, y= hr))+
-          #geom_point(aes(colour = BFR))+
+HRplot <- ggplot(HRSUMplot,aes(x= speed, y= hr))+
+          geom_errorbar(aes(ymin = hr-se, ymax=hr+se), width = 0.1)+
+          geom_point(aes(colour = BFR))
+          
           #geom_smooth(method = "lm")
 
-#HRplot
+HRplot
 
 ```
 
