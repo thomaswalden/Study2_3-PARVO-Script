@@ -471,6 +471,65 @@ WGSP09_bind <- rbind(WGSP09_S1PARVOc,WGSP09_S2PARVOc,WGSP09_S3PARVOc,WGSP09_S4PA
   mutate(sex = "male")
 ```
 
+#WGSP11
+```{r}
+WGSP11_S1PARVO <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP11//Session1//Parvo//WGSP011_S1.csv")
+WGSP11_S2PARVO <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP11//Session2//Parvo//WGSP011_S2.csv")
+WGSP11_S3PARVO <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP11//Session3//Parvo//WGSP011_S3.csv")
+WGSP11_S4PARVO <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP11//Session4//Parvo//WGSP011_S4.csv")
+```
+
+##Session 1
+```{r}
+WGSP11_S1PARVOc <- WGSP11_S1PARVO%>%
+  mutate(participant = "P11")%>%
+  mutate(session = 1)%>%
+  mutate(BFR = "YES")%>%
+  mutate(AOP = 94)%>%
+  mutate(speed = "SW")%>%
+  mutate(km_h = 4.6)
+  
+```
+
+##Session 2
+```{r}
+WGSP11_S2PARVOc <- WGSP11_S2PARVO%>%
+  mutate(participant = "P11")%>%
+  mutate(session = 2)%>%
+  mutate(BFR = "YES")%>%
+  mutate(AOP = 94)%>%
+  mutate(speed = "FW")%>%
+  mutate(km_h = 5.9)
+```
+
+##Session 3
+```{r}
+WGSP11_S3PARVOc <- WGSP11_S3PARVO%>%
+  mutate(participant = "P11")%>%
+  mutate(session = 3)%>%
+  mutate(BFR = "NO")%>%
+  mutate(AOP = 0)%>%
+  mutate(speed = "SW")%>%
+  mutate(km_h = 4.6)
+```
+
+##Session 4
+```{r}
+WGSP11_S4PARVOc <- WGSP11_S4PARVO%>%
+  mutate(participant = "P11")%>%
+  mutate(session = 4)%>%
+  mutate(BFR = "NO")%>%
+  mutate(AOP = 0)%>%
+  mutate(speed = "FW")%>%
+  mutate(km_h = 4.9)
+```
+
+```{r}
+WGSP11_bind <- rbind(WGSP11_S1PARVOc,WGSP11_S2PARVOc,WGSP11_S3PARVOc,WGSP11_S4PARVOc)%>%
+  mutate(age = 31)%>%
+  mutate(sex = "male")
+```
+
 #WGSP12
 ```{r}
 WGSP12_S1PARVO <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP12//Session1//Parvo//WGSP012_S1.csv")
@@ -648,13 +707,13 @@ WGSP15_bind <- rbind(WGSP15_S1PARVOc,WGSP15_S2PARVOc,WGSP15_S3PARVOc,WGSP15_S4PA
   mutate(sex = "male")
 ```
 
-##Study Bind
+#Study Bind
 ```{r}
-Study2PARVOBIND <- rbind(WGSP01_bind,WGSP02_bind,WGSP03_bind,WGSP04_bind,WGSP06_bind,WGSP07_bind,WGSP08_bind,WGSP09_bind,WGSP12_bind,WGSP13_bind,WGSP15_bind)
+Study2PARVOBIND <- rbind(WGSP01_bind,WGSP02_bind,WGSP03_bind,WGSP04_bind,WGSP06_bind,WGSP07_bind,WGSP08_bind,WGSP09_bind,WGSP11_bind,WGSP12_bind,WGSP13_bind,WGSP15_bind)
 ```
 
 ```{r}
-write.csv(Study2PARVOBIND,"C:\\Users\\thoma\\OneDrive - Murdoch University\\Desktop\\PhD 2021\\Study 2 and 3\\AAADATA\\Main CSV sheets\\RAW_PARVO_DATA(03-12-2021).csv",row.names=FALSE)
+write.csv(Study2PARVOBIND,"C:\\Users\\thoma\\OneDrive - Murdoch University\\Desktop\\PhD 2021\\Study 2 and 3\\AAADATA\\Main CSV sheets\\RAW_PARVO_DATA(06-12-2021).csv",row.names=FALSE)
 ```
 
 #Summary
