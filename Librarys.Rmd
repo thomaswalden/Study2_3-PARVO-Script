@@ -25,9 +25,11 @@ library(hrbrthemes)
 library(patchwork)
 library(mmtable2)
 library(stringi)
-#install.packages("lmerTest")
 library(lmerTest)
 library(hms)
+library(rmarkdown)
+library(knitr)
+#install.packages("knitr")
 ```
 
 
