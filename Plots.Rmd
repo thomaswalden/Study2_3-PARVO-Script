@@ -1,0 +1,37 @@
+
+```{r}
+HRBINDplot<-HRSUM%>%
+  filter(!INTERVALS %in% "BLANK")
+
+```
+
+```{r}
+pd<- position_dodge(width = 0.5)
+HRBINDplot$INTERVALS_f = factor(HRBINDplot$INTERVALS, levels=c("PRE_REST", "WARM_UP", "EXERCISE"))
+
+
+HRPLOT <- ggplot(HRBINDplot, aes(x = INTERVALS_f, y= hr))+
+          geom_point(aes(shape = type),size = 2.5, stroke = 1.5,, position = pd)+
+          geom_line(aes(group = type), position = pd)+
+          geom_errorbar(aes(ymin = hr-se, ymax=hr+se, group= type),colour = "black", position = pd)+
+  xlab("") + ylab("Heart Rate (bpm) \n")+
+  scale_x_discrete(breaks=c("PRE_REST", "WARM_UP", "EXERCISE"),
+              labels=c("REST", "WARM UP", "EXERCISE"))+
+  
+  theme(legend.title = element_blank())
+
+HRPLOT
+```
+
+```{r}
+HRBIND1 <- HRBIND%>%
+  filter(!INTERVALS %in% "BLANK")
+
+
+HRPLOT2 <- ggplot(HRBIND1,aes(x = secs, y = hr))+
+           geom_line(aes(group = participant, colour = participant))+
+           geom_point(aes(group = type, colour = participant))
+
+HRPLOT2
+```
+
