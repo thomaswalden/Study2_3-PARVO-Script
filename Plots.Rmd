@@ -17,7 +17,7 @@ HRPLOT <- ggplot(HRBINDplot, aes(x = INTERVALS_f, y= hr))+
   xlab("") + ylab("Heart Rate (bpm) \n")+
   scale_x_discrete(breaks=c("PRE_REST", "WARM_UP", "EXERCISE"),
               labels=c("REST", "WARM UP", "EXERCISE"))+
-  
+  theme_classic()+
   theme(legend.title = element_blank())
 
 HRPLOT
