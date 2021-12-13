@@ -21,6 +21,12 @@ WGSP01_S2HR$secs <- as.character(WGSP01_S2HR$secs)
 WGSP01_S2HR$secs <- gsub(":", ".", WGSP01_S2HR$secs, perl=TRUE)
 WGSP01_S2HR$secs <- stri_sub(WGSP01_S2HR$secs,4)
 WGSP01_S2HR$secs <- as.numeric(WGSP01_S2HR$secs)
+
+WGSP01_S2HR <- WGSP01_S2HR%>%
+  mutate(INTERVALS = ifelse(secs>0 & secs<5,"PRE_REST",
+                     ifelse(secs>6.09 & secs<9.09, "WARM_UP",
+                     ifelse(secs>9.51 & secs<29.51, "EXERCISE", "BLANK"))))
+
 ```
 
 ##SESSION 3
@@ -39,6 +45,11 @@ WGSP01_S3HR$secs <- as.character(WGSP01_S3HR$secs)
 WGSP01_S3HR$secs <- gsub(":", ".", WGSP01_S3HR$secs, perl=TRUE)
 WGSP01_S3HR$secs <- stri_sub(WGSP01_S3HR$secs,4)
 WGSP01_S3HR$secs <- as.numeric(WGSP01_S3HR$secs)
+
+WGSP01_S3HR <- WGSP01_S3HR%>%
+  mutate(INTERVALS = ifelse(secs>0 & secs<5,"PRE_REST",
+                     ifelse(secs>5.34 & secs<8.34, "WARM_UP",
+                     ifelse(secs>12.09 & secs<32.09, "EXERCISE", "BLANK"))))
 ```
 
 ##SESSION 4
@@ -57,6 +68,11 @@ WGSP01_S4HR$secs <- as.character(WGSP01_S4HR$secs)
 WGSP01_S4HR$secs <- gsub(":", ".", WGSP01_S4HR$secs, perl=TRUE)
 WGSP01_S4HR$secs <- stri_sub(WGSP01_S4HR$secs,4)
 WGSP01_S4HR$secs <- as.numeric(WGSP01_S4HR$secs)
+
+WGSP01_S4HR <- WGSP01_S4HR%>%
+  mutate(INTERVALS = ifelse(secs>0 & secs<5,"PRE_REST",
+                     ifelse(secs>5.33 & secs<8.33, "WARM_UP",
+                     ifelse(secs>8.59 & secs<28.59, "EXERCISE", "BLANK"))))
 ```
 
 ```{r, P1 Bind, echo=FALSE}
@@ -92,6 +108,11 @@ WGSP02_S1HR$secs <- as.character(WGSP02_S1HR$secs)
 WGSP02_S1HR$secs <- gsub(":", ".", WGSP02_S1HR$secs, perl=TRUE)
 WGSP02_S1HR$secs <- stri_sub(WGSP02_S1HR$secs,4)
 WGSP02_S1HR$secs <- as.numeric(WGSP02_S1HR$secs)
+
+WGSP02_S1HR <- WGSP02_S1HR%>%
+  mutate(INTERVALS = ifelse(secs>0 & secs<5,"PRE_REST",
+                     ifelse(secs>6.14 & secs<9.14, "WARM_UP",
+                     ifelse(secs>12.27 & secs<32.27, "EXERCISE", "BLANK"))))
 ```
 
 ##SESSION 2
@@ -110,6 +131,11 @@ WGSP02_S2HR$secs <- as.character(WGSP02_S2HR$secs)
 WGSP02_S2HR$secs <- gsub(":", ".", WGSP02_S2HR$secs, perl=TRUE)
 WGSP02_S2HR$secs <- stri_sub(WGSP02_S2HR$secs,4)
 WGSP02_S2HR$secs <- as.numeric(WGSP02_S2HR$secs)
+
+WGSP02_S2HR <- WGSP02_S2HR%>%
+  mutate(INTERVALS = ifelse(secs>0 & secs<5,"PRE_REST",
+                     ifelse(secs>5.29 & secs<8.29, "WARM_UP",
+                     ifelse(secs>8.56 & secs<28.56, "EXERCISE", "BLANK"))))
 
 ```
 
@@ -130,6 +156,11 @@ WGSP02_S3HR$secs <- gsub(":", ".", WGSP02_S3HR$secs, perl=TRUE)
 WGSP02_S3HR$secs <- stri_sub(WGSP02_S3HR$secs,4)
 WGSP02_S3HR$secs <- as.numeric(WGSP02_S3HR$secs)
 
+WGSP02_S3HR <- WGSP02_S3HR%>%
+  mutate(INTERVALS = ifelse(secs>0 & secs<5,"PRE_REST",
+                     ifelse(secs>6.13 & secs<9.13, "WARM_UP",
+                     ifelse(secs>11.56 & secs<31.56, "EXERCISE", "BLANK"))))
+
 ```
 
 ##SESSION 4
@@ -148,6 +179,11 @@ WGSP02_S4HR$secs <- as.character(WGSP02_S4HR$secs)
 WGSP02_S4HR$secs <- gsub(":", ".", WGSP02_S4HR$secs, perl=TRUE)
 WGSP02_S4HR$secs <- stri_sub(WGSP02_S4HR$secs,4)
 WGSP02_S4HR$secs <- as.numeric(WGSP02_S4HR$secs)
+
+WGSP02_S4HR <- WGSP02_S4HR%>%
+  mutate(INTERVALS = ifelse(secs>0 & secs<5,"PRE_REST",
+                     ifelse(secs>5.28 & secs<8.28, "WARM_UP",
+                     ifelse(secs>8.53 & secs<28.53, "EXERCISE", "BLANK"))))
 
 ```
 
@@ -184,6 +220,12 @@ WGSP03_S1HR$secs <- as.character(WGSP03_S1HR$secs)
 WGSP03_S1HR$secs <- gsub(":", ".", WGSP03_S1HR$secs, perl=TRUE)
 WGSP03_S1HR$secs <- stri_sub(WGSP03_S1HR$secs,4)
 WGSP03_S1HR$secs <- as.numeric(WGSP03_S1HR$secs)
+
+WGSP03_S1HR <- WGSP03_S1HR%>%
+  mutate(INTERVALS = ifelse(secs>0 & secs<5,"PRE_REST",
+                     ifelse(secs>5.46 & secs<8.46, "WARM_UP",
+                     ifelse(secs>12.49 & secs<32.49, "EXERCISE", "BLANK"))))
+
 ```
 
 ##SESSION 2
@@ -202,6 +244,11 @@ WGSP03_S2HR$secs <- as.character(WGSP03_S2HR$secs)
 WGSP03_S2HR$secs <- gsub(":", ".", WGSP03_S2HR$secs, perl=TRUE)
 WGSP03_S2HR$secs <- stri_sub(WGSP03_S2HR$secs,4)
 WGSP03_S2HR$secs <- as.numeric(WGSP03_S2HR$secs)
+
+WGSP03_S2HR <- WGSP03_S2HR%>%
+  mutate(INTERVALS = ifelse(secs>0 & secs<5,"PRE_REST",
+                     ifelse(secs>5.35 & secs<8.35, "WARM_UP",
+                     ifelse(secs>9.06 & secs<29.06, "EXERCISE", "BLANK"))))
 
 ```
 
@@ -222,6 +269,11 @@ WGSP03_S3HR$secs <- gsub(":", ".", WGSP03_S3HR$secs, perl=TRUE)
 WGSP03_S3HR$secs <- stri_sub(WGSP03_S3HR$secs,4)
 WGSP03_S3HR$secs <- as.numeric(WGSP03_S3HR$secs)
 
+WGSP03_S3HR <- WGSP03_S3HR%>%
+  mutate(INTERVALS = ifelse(secs>0 & secs<5,"PRE_REST",
+                     ifelse(secs>5.34& secs<8.34, "WARM_UP",
+                     ifelse(secs>12.03 & secs<32.03, "EXERCISE", "BLANK"))))
+
 ```
 
 ##SESSION 4
@@ -240,6 +292,11 @@ WGSP03_S4HR$secs <- as.character(WGSP03_S4HR$secs)
 WGSP03_S4HR$secs <- gsub(":", ".", WGSP03_S4HR$secs, perl=TRUE)
 WGSP03_S4HR$secs <- stri_sub(WGSP03_S4HR$secs,4)
 WGSP03_S4HR$secs <- as.numeric(WGSP03_S4HR$secs)
+
+WGSP03_S4HR <- WGSP03_S4HR%>%
+  mutate(INTERVALS = ifelse(secs>0 & secs<5,"PRE_REST",
+                     ifelse(secs>5.30 & secs<8.30, "WARM_UP",
+                     ifelse(secs>8.50 & secs<28.50, "EXERCISE", "BLANK"))))
 
 ```
 
@@ -265,8 +322,8 @@ WGSP04_S4HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Deskto
 WGSP04_S2HR <- WGSP04_S2HR%>%
   mutate(session = 2)%>%
   mutate(participant = "P4")%>%
-  mutate(BFR = "YES")%>%
-  mutate(AOP = 102)%>%
+  mutate(BFR = "NO")%>%
+  mutate(AOP = 0)%>%
   mutate(speed = "SW")%>%
   mutate(km_h = 5.3)
 WGSP04_S2HR$session <- as.factor(WGSP04_S2HR$session)
@@ -276,6 +333,11 @@ WGSP04_S2HR$secs <- as.character(WGSP04_S2HR$secs)
 WGSP04_S2HR$secs <- gsub(":", ".", WGSP04_S2HR$secs, perl=TRUE)
 WGSP04_S2HR$secs <- stri_sub(WGSP04_S2HR$secs,4)
 WGSP04_S2HR$secs <- as.numeric(WGSP04_S2HR$secs)
+
+WGSP04_S2HR <- WGSP04_S2HR%>%
+  mutate(INTERVALS = ifelse(secs>0 & secs<5,"PRE_REST",
+                     ifelse(secs>6.10 & secs<9.10, "WARM_UP",
+                     ifelse(secs>9.49 & secs<27.49, "EXERCISE", "BLANK"))))
 ```
 
 ##SESSION 3
@@ -283,10 +345,10 @@ WGSP04_S2HR$secs <- as.numeric(WGSP04_S2HR$secs)
 WGSP04_S3HR <- WGSP04_S3HR%>%
   mutate(session = 3)%>%
   mutate(participant = "P4")%>%
-  mutate(BFR = "NO")%>%
-  mutate(AOP = 0)%>%
-  mutate(speed = "SW")%>%
-  mutate(km_h = 5.3)
+  mutate(BFR = "YES")%>%
+  mutate(AOP = 102)%>%
+  mutate(speed = "FW")%>%
+  mutate(km_h = 6.8)
 WGSP04_S3HR$session <- as.factor(WGSP04_S3HR$session)
 WGSP04_S3HR$secs <- as_hms(WGSP04_S3HR$secs)
 WGSP04_S3HR = subset(WGSP04_S3HR,select = -c(cad,km,kph,nm,watts,alt,lon,lat,headwind,slope,temp,interval,lrbalance,lte,rte,lps,rps,smo2,thb,o2hb,hhb))
@@ -295,6 +357,11 @@ WGSP04_S3HR$secs <- gsub(":", ".", WGSP04_S3HR$secs, perl=TRUE)
 WGSP04_S3HR$secs <- stri_sub(WGSP04_S3HR$secs,4)
 WGSP04_S3HR$secs <- as.numeric(WGSP04_S3HR$secs)
 
+WGSP04_S3HR <- WGSP04_S3HR%>%
+  mutate(INTERVALS = ifelse(secs>0 & secs<5,"PRE_REST",
+                     ifelse(secs>5.34 & secs<8.34, "WARM_UP",
+                     ifelse(secs>13.02 & secs<15.02, "EXERCISE", "BLANK"))))
+
 ```
 
 ##SESSION 4
@@ -302,8 +369,8 @@ WGSP04_S3HR$secs <- as.numeric(WGSP04_S3HR$secs)
 WGSP04_S4HR <- WGSP04_S4HR%>%
   mutate(session = 4)%>%
   mutate(participant = "P4")%>%
-  mutate(BFR = "YES")%>%
-  mutate(AOP = 102)%>%
+  mutate(BFR = "NO")%>%
+  mutate(AOP = 0)%>%
   mutate(speed = "FW")%>%
   mutate(km_h = 6.8)
 WGSP04_S4HR$session <- as.factor(WGSP04_S4HR$session)
@@ -313,6 +380,11 @@ WGSP04_S4HR$secs <- as.character(WGSP04_S4HR$secs)
 WGSP04_S4HR$secs <- gsub(":", ".", WGSP04_S4HR$secs, perl=TRUE)
 WGSP04_S4HR$secs <- stri_sub(WGSP04_S4HR$secs,4)
 WGSP04_S4HR$secs <- as.numeric(WGSP04_S4HR$secs)
+
+WGSP04_S4HR <- WGSP04_S4HR%>%
+  mutate(INTERVALS = ifelse(secs>0 & secs<5,"PRE_REST",
+                     ifelse(secs>5.42 & secs<8.42, "WARM_UP",
+                     ifelse(secs>9.14 & secs<11.14, "EXERCISE", "BLANK"))))
 
 ```
 
