@@ -15,7 +15,14 @@ WGSP01_S1PARVOc <- WGSP01_S1PARVO%>%
   mutate(BFR = "YES")%>%
   mutate(AOP = 88)%>%
   mutate(speed = "FW")%>%
-  mutate(km_h = 6.7)
+  mutate(km_h = 6.7)%>%
+  mutate(TIME1 = (TIME*60))
+  WGSP01_S1PARVOc$TIME1 <- round(WGSP01_S1PARVOc$TIME1, digits = 0)
+  WGSP01_S1PARVOc$TIME1 <- as_hms(WGSP01_S1PARVOc$TIME1)
+  WGSP01_S1PARVOc$TIME1 <- as.character(WGSP01_S1PARVOc$TIME1)
+  WGSP01_S1PARVOc$TIME1 <- gsub(":", ".", WGSP01_S1PARVOc$TIME1, perl=TRUE)
+  WGSP01_S1PARVOc$TIME1 <- stri_sub(WGSP01_S1PARVOc$TIME1,4)
+  WGSP01_S1PARVOc$TIME1 <- as.numeric(WGSP01_S1PARVOc$TIME1)
   
 ```
 
@@ -27,7 +34,19 @@ WGSP01_S2PARVOc <- WGSP01_S2PARVO%>%
   mutate(BFR = "NO")%>%
   mutate(AOP = 0)%>%
   mutate(speed = "FW")%>%
-  mutate(km_h = 6.7)
+  mutate(km_h = 6.7)%>%
+  mutate(TIME1 = (TIME*60))
+  WGSP01_S2PARVOc$TIME1 <- round(WGSP01_S2PARVOc$TIME1, digits = 0)
+  WGSP01_S2PARVOc$TIME1 <- as_hms(WGSP01_S2PARVOc$TIME1)
+  WGSP01_S2PARVOc$TIME1 <- as.character(WGSP01_S2PARVOc$TIME1)
+  WGSP01_S2PARVOc$TIME1 <- gsub(":", ".", WGSP01_S2PARVOc$TIME1, perl=TRUE)
+  WGSP01_S2PARVOc$TIME1 <- stri_sub(WGSP01_S2PARVOc$TIME1,4)
+  WGSP01_S2PARVOc$TIME1 <- as.numeric(WGSP01_S2PARVOc$TIME1)
+  
+  WGSP01_S2PARVOc <- WGSP01_S2PARVOc%>%
+  mutate(INTERVALS = ifelse(TIME1>0 & TIME1<5,"PRE_REST",
+                     ifelse(TIME1>6.09 & TIME1<9.09, "WARM_UP",
+                     ifelse(TIME1>9.51 & TIME1<29.51, "EXERCISE", "BLANK"))))
 ```
 
 ##Session 3
@@ -778,5 +797,8 @@ write.csv(Study2PARVOBIND,"C:\\Users\\thoma\\OneDrive - Murdoch University\\Desk
 ```{r}
 VESUM <- Study2PARVOBIND%>%
 summarySE(measurevar = "VE", groupvar =c("speed","BFR","participant"), na.rm = TRUE, conf.interval = 0.95, .drop = TRUE)
+
+FECO2SUM <- Study2PARVOBIND%>%
+summarySE(measurevar = "FECO2", groupvar =c("speed","BFR"), na.rm = TRUE, conf.interval = 0.95, .drop = TRUE)
 ```
 
