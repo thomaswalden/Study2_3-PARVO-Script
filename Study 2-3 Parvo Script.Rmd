@@ -686,8 +686,19 @@ WGSP08_S1PARVOc <- WGSP08_S1PARVO%>%
   mutate(BFR = "YES")%>%
   mutate(AOP = 116)%>%
   mutate(speed = "SW")%>%
-  mutate(km_h = 5.2)
+  mutate(km_h = 5.2)%>%
+  mutate(TIME1 = (TIME*60))
+  WGSP08_S1PARVOc$TIME1 <- round(WGSP08_S1PARVOc$TIME1, digits = 0)
+  WGSP08_S1PARVOc$TIME1 <- as_hms(WGSP08_S1PARVOc$TIME1)
+  WGSP08_S1PARVOc$TIME1 <- as.character(WGSP08_S1PARVOc$TIME1)
+  WGSP08_S1PARVOc$TIME1 <- gsub(":", ".", WGSP08_S1PARVOc$TIME1, perl=TRUE)
+  WGSP08_S1PARVOc$TIME1 <- stri_sub(WGSP08_S1PARVOc$TIME1,4)
+  WGSP08_S1PARVOc$TIME1 <- as.numeric(WGSP08_S1PARVOc$TIME1)
   
+  WGSP08_S1PARVOc <- WGSP08_S1PARVOc%>%
+  mutate(INTERVALS = ifelse(TIME1>0 & TIME1<5,"PRE_REST",
+                     ifelse(TIME1>13.38 & TIME1<16.38, "WARM_UP",
+                     ifelse(TIME1>19.47 & TIME1<39.47, "EXERCISE", "BLANK"))))
 ```
 
 ##Session 2
@@ -698,7 +709,19 @@ WGSP08_S2PARVOc <- WGSP08_S2PARVO%>%
   mutate(BFR = "NO")%>%
   mutate(AOP = 0)%>%
   mutate(speed = "SW")%>%
-  mutate(km_h = 5.2)
+  mutate(km_h = 5.2)%>%
+  mutate(TIME1 = (TIME*60))
+  WGSP08_S2PARVOc$TIME1 <- round(WGSP08_S2PARVOc$TIME1, digits = 0)
+  WGSP08_S2PARVOc$TIME1 <- as_hms(WGSP08_S2PARVOc$TIME1)
+  WGSP08_S2PARVOc$TIME1 <- as.character(WGSP08_S2PARVOc$TIME1)
+  WGSP08_S2PARVOc$TIME1 <- gsub(":", ".", WGSP08_S2PARVOc$TIME1, perl=TRUE)
+  WGSP08_S2PARVOc$TIME1 <- stri_sub(WGSP08_S2PARVOc$TIME1,4)
+  WGSP08_S2PARVOc$TIME1 <- as.numeric(WGSP08_S2PARVOc$TIME1)
+  
+  WGSP08_S2PARVOc <- WGSP08_S2PARVOc%>%
+    mutate(INTERVALS = ifelse(TIME1>0 & TIME1<5,"PRE_REST",
+                     ifelse(TIME1>5.35 & TIME1<8.35, "WARM_UP",
+                     ifelse(TIME1>9.04 & TIME1<29.04, "EXERCISE", "BLANK"))))
 ```
 
 ##Session 3
@@ -709,7 +732,19 @@ WGSP08_S3PARVOc <- WGSP08_S3PARVO%>%
   mutate(BFR = "YES")%>%
   mutate(AOP = 116)%>%
   mutate(speed = "FW")%>%
-  mutate(km_h = 6.7)
+  mutate(km_h = 6.7)%>%
+  mutate(TIME1 = (TIME*60))
+  WGSP08_S3PARVOc$TIME1 <- round(WGSP08_S3PARVOc$TIME1, digits = 0)
+  WGSP08_S3PARVOc$TIME1 <- as_hms(WGSP08_S3PARVOc$TIME1)
+  WGSP08_S3PARVOc$TIME1 <- as.character(WGSP08_S3PARVOc$TIME1)
+  WGSP08_S3PARVOc$TIME1 <- gsub(":", ".", WGSP08_S3PARVOc$TIME1, perl=TRUE)
+  WGSP08_S3PARVOc$TIME1 <- stri_sub(WGSP08_S3PARVOc$TIME1,4)
+  WGSP08_S3PARVOc$TIME1 <- as.numeric(WGSP08_S3PARVOc$TIME1)
+  
+  WGSP08_S3PARVOc <- WGSP08_S3PARVOc%>%
+    mutate(INTERVALS = ifelse(TIME1>0 & TIME1<5,"PRE_REST",
+                     ifelse(TIME1>5.28 & TIME1<8.28, "WARM_UP",
+                     ifelse(TIME1>12.24 & TIME1<17.24, "EXERCISE", "BLANK"))))
 ```
 
 ##Session 4
@@ -720,7 +755,19 @@ WGSP08_S4PARVOc <- WGSP08_S4PARVO%>%
   mutate(BFR = "NO")%>%
   mutate(AOP = 0)%>%
   mutate(speed = "FW")%>%
-  mutate(km_h = 6.7)
+  mutate(km_h = 6.7)%>%
+  mutate(TIME1 = (TIME*60))
+  WGSP08_S4PARVOc$TIME1 <- round(WGSP08_S4PARVOc$TIME1, digits = 0)
+  WGSP08_S4PARVOc$TIME1 <- as_hms(WGSP08_S4PARVOc$TIME1)
+  WGSP08_S4PARVOc$TIME1 <- as.character(WGSP08_S4PARVOc$TIME1)
+  WGSP08_S4PARVOc$TIME1 <- gsub(":", ".", WGSP08_S4PARVOc$TIME1, perl=TRUE)
+  WGSP08_S4PARVOc$TIME1 <- stri_sub(WGSP08_S4PARVOc$TIME1,4)
+  WGSP08_S4PARVOc$TIME1 <- as.numeric(WGSP08_S4PARVOc$TIME1)
+  
+  WGSP08_S4PARVOc <- WGSP08_S4PARVOc%>%
+    mutate(INTERVALS = ifelse(TIME1>0 & TIME1<5,"PRE_REST",
+                     ifelse(TIME1>5.33 & TIME1<8.33, "WARM_UP",
+                     ifelse(TIME1>8.59 & TIME1<13.59, "EXERCISE", "BLANK"))))
 ```
 
 ```{r}
@@ -745,7 +792,19 @@ WGSP09_S1PARVOc <- WGSP09_S1PARVO%>%
   mutate(BFR = "YES")%>%
   mutate(AOP = 108)%>%
   mutate(speed = "FW")%>%
-  mutate(km_h = 7.0)
+  mutate(km_h = 7.0)%>%
+  mutate(TIME1 = (TIME*60))
+  WGSP09_S1PARVOc$TIME1 <- round(WGSP09_S1PARVOc$TIME1, digits = 0)
+  WGSP09_S1PARVOc$TIME1 <- as_hms(WGSP09_S1PARVOc$TIME1)
+  WGSP09_S1PARVOc$TIME1 <- as.character(WGSP09_S1PARVOc$TIME1)
+  WGSP09_S1PARVOc$TIME1 <- gsub(":", ".", WGSP09_S1PARVOc$TIME1, perl=TRUE)
+  WGSP09_S1PARVOc$TIME1 <- stri_sub(WGSP09_S1PARVOc$TIME1,4)
+  WGSP09_S1PARVOc$TIME1 <- as.numeric(WGSP09_S1PARVOc$TIME1)
+  
+  WGSP09_S1PARVOc <- WGSP09_S1PARVOc%>%
+    mutate(INTERVALS = ifelse(TIME1>0 & TIME1<5,"PRE_REST",
+                     ifelse(TIME1>6.05 & TIME1<9.05, "WARM_UP",
+                     ifelse(TIME1>12.16 & TIME1<18.08, "EXERCISE", "BLANK"))))
   
 ```
 
@@ -757,7 +816,19 @@ WGSP09_S2PARVOc <- WGSP09_S2PARVO%>%
   mutate(BFR = "NO")%>%
   mutate(AOP = 0)%>%
   mutate(speed = "FW")%>%
-  mutate(km_h = 7.0)
+  mutate(km_h = 7.0)%>%
+  mutate(TIME1 = (TIME*60))
+  WGSP09_S2PARVOc$TIME1 <- round(WGSP09_S2PARVOc$TIME1, digits = 0)
+  WGSP09_S2PARVOc$TIME1 <- as_hms(WGSP09_S2PARVOc$TIME1)
+  WGSP09_S2PARVOc$TIME1 <- as.character(WGSP09_S2PARVOc$TIME1)
+  WGSP09_S2PARVOc$TIME1 <- gsub(":", ".", WGSP09_S2PARVOc$TIME1, perl=TRUE)
+  WGSP09_S2PARVOc$TIME1 <- stri_sub(WGSP09_S2PARVOc$TIME1,4)
+  WGSP09_S2PARVOc$TIME1 <- as.numeric(WGSP09_S2PARVOc$TIME1)
+  
+  WGSP09_S2PARVOc <- WGSP09_S2PARVOc%>%
+    mutate(INTERVALS = ifelse(TIME1>0 & TIME1<5,"PRE_REST",
+                     ifelse(TIME1>5.30 & TIME1<8.30, "WARM_UP",
+                     ifelse(TIME1>8.56 & TIME1<14.56, "EXERCISE", "BLANK"))))
 ```
 
 ##Session 3
@@ -768,7 +839,19 @@ WGSP09_S3PARVOc <- WGSP09_S3PARVO%>%
   mutate(BFR = "YES")%>%
   mutate(AOP = 108)%>%
   mutate(speed = "SW")%>%
-  mutate(km_h = 5.5)
+  mutate(km_h = 5.5)%>%
+  mutate(TIME1 = (TIME*60))
+  WGSP09_S3PARVOc$TIME1 <- round(WGSP09_S3PARVOc$TIME1, digits = 0)
+  WGSP09_S3PARVOc$TIME1 <- as_hms(WGSP09_S3PARVOc$TIME1)
+  WGSP09_S3PARVOc$TIME1 <- as.character(WGSP09_S3PARVOc$TIME1)
+  WGSP09_S3PARVOc$TIME1 <- gsub(":", ".", WGSP09_S3PARVOc$TIME1, perl=TRUE)
+  WGSP09_S3PARVOc$TIME1 <- stri_sub(WGSP09_S3PARVOc$TIME1,4)
+  WGSP09_S3PARVOc$TIME1 <- as.numeric(WGSP09_S3PARVOc$TIME1)
+  
+  WGSP09_S3PARVOc <- WGSP09_S3PARVOc%>%
+    mutate(INTERVALS = ifelse(TIME1>0 & TIME1<5,"PRE_REST",
+                     ifelse(TIME1>5.34 & TIME1<8.34, "WARM_UP",
+                     ifelse(TIME1>11.43 & TIME1<31.43, "EXERCISE", "BLANK"))))
 ```
 
 ##Session 4
@@ -779,7 +862,19 @@ WGSP09_S4PARVOc <- WGSP09_S4PARVO%>%
   mutate(BFR = "NO")%>%
   mutate(AOP = 0)%>%
   mutate(speed = "SW")%>%
-  mutate(km_h = 5.5)
+  mutate(km_h = 5.5)%>%
+  mutate(TIME1 = (TIME*60))
+  WGSP09_S4PARVOc$TIME1 <- round(WGSP09_S4PARVOc$TIME1, digits = 0)
+  WGSP09_S4PARVOc$TIME1 <- as_hms(WGSP09_S4PARVOc$TIME1)
+  WGSP09_S4PARVOc$TIME1 <- as.character(WGSP09_S4PARVOc$TIME1)
+  WGSP09_S4PARVOc$TIME1 <- gsub(":", ".", WGSP09_S4PARVOc$TIME1, perl=TRUE)
+  WGSP09_S4PARVOc$TIME1 <- stri_sub(WGSP09_S4PARVOc$TIME1,4)
+  WGSP09_S4PARVOc$TIME1 <- as.numeric(WGSP09_S4PARVOc$TIME1)
+  
+  WGSP09_S4PARVOc <- WGSP09_S4PARVOc%>%
+    mutate(INTERVALS = ifelse(TIME1>0 & TIME1<5,"PRE_REST",
+                     ifelse(TIME1>5.30 & TIME1<8.30, "WARM_UP",
+                     ifelse(TIME1>9.08 & TIME1<29.08, "EXERCISE", "BLANK"))))
 ```
 
 ```{r}
@@ -788,6 +883,116 @@ WGSP09_bind <- rbind(WGSP09_S1PARVOc,WGSP09_S2PARVOc,WGSP09_S3PARVOc,WGSP09_S4PA
   mutate(sex = "male")
 ```
 
+#WGSP10
+```{r}
+WGSP10_S1PARVO <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP10//Session1//Parvo//WGSP10_S1.csv")
+WGSP10_S2PARVO <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP10//Session2//Parvo//WGSP10_S2.csv")
+WGSP10_S3PARVO <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP10//Session3//Parvo//WGSP10_S3.csv")
+WGSP10_S4PARVO <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP10//Session4//Parvo//WGSP10_S4.csv")
+```
+
+##Session 1
+```{r}
+WGSP10_S1PARVOc <- WGSP10_S1PARVO%>%
+  mutate(session = 1)%>%
+  mutate(participant = "P10")%>%
+  mutate(BFR = "YES")%>%
+  mutate(AOP = 185)%>%
+  mutate(speed = "SW")%>%
+  mutate(km_h = 5.3)%>%
+  mutate(type = "SWBFR")%>%
+  mutate(TIME1 = (TIME*60))
+  WGSP10_S1PARVOc$TIME1 <- round(WGSP10_S1PARVOc$TIME1, digits = 0)
+  WGSP10_S1PARVOc$TIME1 <- as_hms(WGSP10_S1PARVOc$TIME1)
+  WGSP10_S1PARVOc$TIME1 <- as.character(WGSP10_S1PARVOc$TIME1)
+  WGSP10_S1PARVOc$TIME1 <- gsub(":", ".", WGSP10_S1PARVOc$TIME1, perl=TRUE)
+  WGSP10_S1PARVOc$TIME1 <- stri_sub(WGSP10_S1PARVOc$TIME1,4)
+  WGSP10_S1PARVOc$TIME1 <- as.numeric(WGSP10_S1PARVOc$TIME1)
+  
+  WGSP10_S1PARVOc <- WGSP10_S1PARVOc%>%
+    mutate(INTERVALS = ifelse(TIME1>0 & TIME1<5,"PRE_REST",
+                     ifelse(TIME1>5.41 & TIME1<8.41, "WARM_UP",
+                     ifelse(TIME1>11.28 & TIME1<31.28, "EXERCISE", "BLANK"))))
+  
+```
+
+##Session 2
+```{r}
+WGSP10_S2PARVOc <- WGSP10_S2PARVO%>%
+  mutate(session = 2)%>%
+  mutate(participant = "P10")%>%
+  mutate(BFR = "NO")%>%
+  mutate(AOP = 0)%>%
+  mutate(speed = "SW")%>%
+  mutate(km_h = 5.3)%>%
+  mutate(type = "SW")%>%
+  mutate(TIME1 = (TIME*60))
+  WGSP10_S2PARVOc$TIME1 <- round(WGSP10_S2PARVOc$TIME1, digits = 0)
+  WGSP10_S2PARVOc$TIME1 <- as_hms(WGSP10_S2PARVOc$TIME1)
+  WGSP10_S2PARVOc$TIME1 <- as.character(WGSP10_S2PARVOc$TIME1)
+  WGSP10_S2PARVOc$TIME1 <- gsub(":", ".", WGSP10_S2PARVOc$TIME1, perl=TRUE)
+  WGSP10_S2PARVOc$TIME1 <- stri_sub(WGSP10_S2PARVOc$TIME1,4)
+  WGSP10_S2PARVOc$TIME1 <- as.numeric(WGSP10_S2PARVOc$TIME1)
+  
+  WGSP10_S2PARVOc <- WGSP10_S2PARVOc%>%
+    mutate(INTERVALS = ifelse(TIME1>0.10 & TIME1<5.10,"PRE_REST",
+                     ifelse(TIME1>6.41 & TIME1<9.41, "WARM_UP",
+                     ifelse(TIME1>10.17 & TIME1<30.17, "EXERCISE", "BLANK"))))
+```
+
+##Session 3
+```{r}
+WGSP10_S3PARVOc <- WGSP10_S3PARVO%>%
+  mutate(session = 3)%>%
+  mutate(participant = "P10")%>%
+  mutate(BFR = "YES")%>%
+  mutate(AOP = 85)%>%
+  mutate(speed = "FW")%>%
+  mutate(km_h = 6.8)%>%
+  mutate(type = "FWBFR")%>%
+  mutate(TIME1 = (TIME*60))
+  WGSP10_S3PARVOc$TIME1 <- round(WGSP10_S3PARVOc$TIME1, digits = 0)
+  WGSP10_S3PARVOc$TIME1 <- as_hms(WGSP10_S3PARVOc$TIME1)
+  WGSP10_S3PARVOc$TIME1 <- as.character(WGSP10_S3PARVOc$TIME1)
+  WGSP10_S3PARVOc$TIME1 <- gsub(":", ".", WGSP10_S3PARVOc$TIME1, perl=TRUE)
+  WGSP10_S3PARVOc$TIME1 <- stri_sub(WGSP10_S3PARVOc$TIME1,4)
+  WGSP10_S3PARVOc$TIME1 <- as.numeric(WGSP10_S3PARVOc$TIME1)
+  
+  WGSP10_S3PARVOc <- WGSP10_S3PARVOc%>%
+    mutate(INTERVALS = ifelse(TIME1>0 & TIME1<5,"PRE_REST",
+                     ifelse(TIME1>5.28 & TIME1<8.28, "WARM_UP",
+                     ifelse(TIME1>11.20 & TIME1<31.20, "EXERCISE", "BLANK"))))
+```
+
+##Session 4
+```{r}
+WGSP10_S4PARVOc <- WGSP10_S4PARVO%>%
+  mutate(session = 4)%>%
+  mutate(participant = "P10")%>%
+  mutate(BFR = "NO")%>%
+  mutate(AOP = 0)%>%
+  mutate(speed = "FW")%>%
+  mutate(km_h = 6.8)%>%
+  mutate(type = "FW")%>%
+  mutate(TIME1 = (TIME*60))
+  WGSP10_S4PARVOc$TIME1 <- round(WGSP10_S4PARVOc$TIME1, digits = 0)
+  WGSP10_S4PARVOc$TIME1 <- as_hms(WGSP10_S4PARVOc$TIME1)
+  WGSP10_S4PARVOc$TIME1 <- as.character(WGSP10_S4PARVOc$TIME1)
+  WGSP10_S4PARVOc$TIME1 <- gsub(":", ".", WGSP10_S4PARVOc$TIME1, perl=TRUE)
+  WGSP10_S4PARVOc$TIME1 <- stri_sub(WGSP10_S4PARVOc$TIME1,4)
+  WGSP10_S4PARVOc$TIME1 <- as.numeric(WGSP10_S4PARVOc$TIME1)
+  
+  WGSP10_S4PARVOc <- WGSP10_S4PARVOc%>%
+    mutate(INTERVALS = ifelse(TIME1>0 & TIME1<5,"PRE_REST",
+                     ifelse(TIME1>5.37 & TIME1<8.37, "WARM_UP",
+                     ifelse(TIME1>9.03 & TIME1<29.03, "EXERCISE", "BLANK"))))
+```
+
+```{r}
+WGSP10_bind <- rbind(WGSP10_S1PARVOc,WGSP10_S2PARVOc,WGSP10_S3PARVOc,WGSP10_S4PARVOc)%>%
+  mutate(age = 29)%>%
+  mutate(sex = "male")
+```
 #WGSP11
 ```{r}
 WGSP11_S1PARVO <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP11//Session1//Parvo//WGSP011_S1.csv")
@@ -804,7 +1009,20 @@ WGSP11_S1PARVOc <- WGSP11_S1PARVO%>%
   mutate(BFR = "YES")%>%
   mutate(AOP = 94)%>%
   mutate(speed = "SW")%>%
-  mutate(km_h = 4.6)
+  mutate(km_h = 4.6)%>%
+  mutate(type = "SWBFR")%>%
+  mutate(TIME1 = (TIME*60))
+  WGSP11_S1PARVOc$TIME1 <- round(WGSP11_S1PARVOc$TIME1, digits = 0)
+  WGSP11_S1PARVOc$TIME1 <- as_hms(WGSP11_S1PARVOc$TIME1)
+  WGSP11_S1PARVOc$TIME1 <- as.character(WGSP11_S1PARVOc$TIME1)
+  WGSP11_S1PARVOc$TIME1 <- gsub(":", ".", WGSP11_S1PARVOc$TIME1, perl=TRUE)
+  WGSP11_S1PARVOc$TIME1 <- stri_sub(WGSP11_S1PARVOc$TIME1,4)
+  WGSP11_S1PARVOc$TIME1 <- as.numeric(WGSP11_S1PARVOc$TIME1)
+  
+  WGSP11_S1PARVOc <- WGSP11_S1PARVOc%>%
+    mutate(INTERVALS = ifelse(TIME1>0 & TIME1<5,"PRE_REST",
+                     ifelse(TIME1>5.33 & TIME1<8.33, "WARM_UP",
+                     ifelse(TIME1>11.24 & TIME1<20.24, "EXERCISE", "BLANK"))))
   
 ```
 
@@ -816,7 +1034,20 @@ WGSP11_S2PARVOc <- WGSP11_S2PARVO%>%
   mutate(BFR = "YES")%>%
   mutate(AOP = 94)%>%
   mutate(speed = "FW")%>%
-  mutate(km_h = 5.9)
+  mutate(km_h = 5.9)%>%
+  mutate(type = "FWBFR")%>%
+  mutate(TIME1 = (TIME*60))
+  WGSP11_S2PARVOc$TIME1 <- round(WGSP11_S2PARVOc$TIME1, digits = 0)
+  WGSP11_S2PARVOc$TIME1 <- as_hms(WGSP11_S2PARVOc$TIME1)
+  WGSP11_S2PARVOc$TIME1 <- as.character(WGSP11_S2PARVOc$TIME1)
+  WGSP11_S2PARVOc$TIME1 <- gsub(":", ".", WGSP11_S2PARVOc$TIME1, perl=TRUE)
+  WGSP11_S2PARVOc$TIME1 <- stri_sub(WGSP11_S2PARVOc$TIME1,4)
+  WGSP11_S2PARVOc$TIME1 <- as.numeric(WGSP11_S2PARVOc$TIME1)
+  
+  WGSP11_S2PARVOc <- WGSP11_S2PARVOc%>%
+    mutate(INTERVALS = ifelse(TIME1>0 & TIME1<5,"PRE_REST",
+                     ifelse(TIME1>5.45 & TIME1<8.45, "WARM_UP",
+                     ifelse(TIME1>12.01 & TIME1<19.08, "EXERCISE", "BLANK"))))
 ```
 
 ##Session 3
@@ -827,7 +1058,20 @@ WGSP11_S3PARVOc <- WGSP11_S3PARVO%>%
   mutate(BFR = "NO")%>%
   mutate(AOP = 0)%>%
   mutate(speed = "SW")%>%
-  mutate(km_h = 4.6)
+  mutate(km_h = 4.6)%>%
+  mutate(type = "SW")%>%
+  mutate(TIME1 = (TIME*60))
+  WGSP11_S3PARVOc$TIME1 <- round(WGSP11_S3PARVOc$TIME1, digits = 0)
+  WGSP11_S3PARVOc$TIME1 <- as_hms(WGSP11_S3PARVOc$TIME1)
+  WGSP11_S3PARVOc$TIME1 <- as.character(WGSP11_S3PARVOc$TIME1)
+  WGSP11_S3PARVOc$TIME1 <- gsub(":", ".", WGSP11_S3PARVOc$TIME1, perl=TRUE)
+  WGSP11_S3PARVOc$TIME1 <- stri_sub(WGSP11_S3PARVOc$TIME1,4)
+  WGSP11_S3PARVOc$TIME1 <- as.numeric(WGSP11_S3PARVOc$TIME1)
+  
+  WGSP11_S3PARVOc <- WGSP11_S3PARVOc%>%
+    mutate(INTERVALS = ifelse(TIME1>0 & TIME1<5,"PRE_REST",
+                     ifelse(TIME1>5.35 & TIME1<8.35, "WARM_UP",
+                     ifelse(TIME1>9.00 & TIME1<18.00, "EXERCISE", "BLANK"))))
 ```
 
 ##Session 4
@@ -838,7 +1082,20 @@ WGSP11_S4PARVOc <- WGSP11_S4PARVO%>%
   mutate(BFR = "NO")%>%
   mutate(AOP = 0)%>%
   mutate(speed = "FW")%>%
-  mutate(km_h = 4.9)
+  mutate(km_h = 4.9)%>%
+  mutate(type = "FW")%>%
+  mutate(TIME1 = (TIME*60))
+  WGSP11_S4PARVOc$TIME1 <- round(WGSP11_S4PARVOc$TIME1, digits = 0)
+  WGSP11_S4PARVOc$TIME1 <- as_hms(WGSP11_S4PARVOc$TIME1)
+  WGSP11_S4PARVOc$TIME1 <- as.character(WGSP11_S4PARVOc$TIME1)
+  WGSP11_S4PARVOc$TIME1 <- gsub(":", ".", WGSP11_S4PARVOc$TIME1, perl=TRUE)
+  WGSP11_S4PARVOc$TIME1 <- stri_sub(WGSP11_S4PARVOc$TIME1,4)
+  WGSP11_S4PARVOc$TIME1 <- as.numeric(WGSP11_S4PARVOc$TIME1)
+  
+  WGSP11_S4PARVOc <- WGSP11_S4PARVOc%>%
+    mutate(INTERVALS = ifelse(TIME1>0 & TIME1<5,"PRE_REST",
+                     ifelse(TIME1>5.30 & TIME1<8.30, "WARM_UP",
+                     ifelse(TIME1>9.19 & TIME1<16.19, "EXERCISE", "BLANK"))))
 ```
 
 ```{r}
@@ -863,7 +1120,20 @@ WGSP12_S1PARVOc <- WGSP12_S1PARVO%>%
   mutate(BFR = "YES")%>%
   mutate(AOP = 104)%>%
   mutate(speed = "FW")%>%
-  mutate(km_h = 6.1)
+  mutate(km_h = 6.1)%>%
+  mutate(type = "FWBFR")%>%
+  mutate(TIME1 = (TIME*60))
+  WGSP12_S1PARVOc$TIME1 <- round(WGSP12_S1PARVOc$TIME1, digits = 0)
+  WGSP12_S1PARVOc$TIME1 <- as_hms(WGSP12_S1PARVOc$TIME1)
+  WGSP12_S1PARVOc$TIME1 <- as.character(WGSP12_S1PARVOc$TIME1)
+  WGSP12_S1PARVOc$TIME1 <- gsub(":", ".", WGSP12_S1PARVOc$TIME1, perl=TRUE)
+  WGSP12_S1PARVOc$TIME1 <- stri_sub(WGSP12_S1PARVOc$TIME1,4)
+  WGSP12_S1PARVOc$TIME1 <- as.numeric(WGSP12_S1PARVOc$TIME1)
+  
+  WGSP12_S1PARVOc <- WGSP12_S1PARVOc%>%
+    mutate(INTERVALS = ifelse(TIME1>0 & TIME1<5,"PRE_REST",
+                     ifelse(TIME1>6.04 & TIME1<9.04, "WARM_UP",
+                     ifelse(TIME1>13.32 & TIME1<33.32, "EXERCISE", "BLANK"))))
   
 ```
 
@@ -875,7 +1145,20 @@ WGSP12_S2PARVOc <- WGSP12_S2PARVO%>%
   mutate(BFR = "NO")%>%
   mutate(AOP = 0)%>%
   mutate(speed = "FW")%>%
-  mutate(km_h = 6.1)
+  mutate(km_h = 6.1)%>%
+  mutate(type = "FW")%>%
+  mutate(TIME1 = (TIME*60))
+  WGSP12_S2PARVOc$TIME1 <- round(WGSP12_S2PARVOc$TIME1, digits = 0)
+  WGSP12_S2PARVOc$TIME1 <- as_hms(WGSP12_S2PARVOc$TIME1)
+  WGSP12_S2PARVOc$TIME1 <- as.character(WGSP12_S2PARVOc$TIME1)
+  WGSP12_S2PARVOc$TIME1 <- gsub(":", ".", WGSP12_S2PARVOc$TIME1, perl=TRUE)
+  WGSP12_S2PARVOc$TIME1 <- stri_sub(WGSP12_S2PARVOc$TIME1,4)
+  WGSP12_S2PARVOc$TIME1 <- as.numeric(WGSP12_S2PARVOc$TIME1)
+  
+  WGSP12_S2PARVOc <- WGSP12_S2PARVOc%>%
+    mutate(INTERVALS = ifelse(TIME1>0 & TIME1<5,"PRE_REST",
+                     ifelse(TIME1>5.35 & TIME1<8.35, "WARM_UP",
+                     ifelse(TIME1>9.01 & TIME1<29.01, "EXERCISE", "BLANK"))))
 ```
 
 ##Session 3
@@ -886,7 +1169,20 @@ WGSP12_S3PARVOc <- WGSP12_S3PARVO%>%
   mutate(BFR = "YES")%>%
   mutate(AOP = 104)%>%
   mutate(speed = "SW")%>%
-  mutate(km_h = 4.8)
+  mutate(km_h = 4.8)%>%
+  mutate(type = "SWBFR")%>%
+  mutate(TIME1 = (TIME*60))
+  WGSP12_S3PARVOc$TIME1 <- round(WGSP12_S3PARVOc$TIME1, digits = 0)
+  WGSP12_S3PARVOc$TIME1 <- as_hms(WGSP12_S3PARVOc$TIME1)
+  WGSP12_S3PARVOc$TIME1 <- as.character(WGSP12_S3PARVOc$TIME1)
+  WGSP12_S3PARVOc$TIME1 <- gsub(":", ".", WGSP12_S3PARVOc$TIME1, perl=TRUE)
+  WGSP12_S3PARVOc$TIME1 <- stri_sub(WGSP12_S3PARVOc$TIME1,4)
+  WGSP12_S3PARVOc$TIME1 <- as.numeric(WGSP12_S3PARVOc$TIME1)
+  
+  WGSP12_S3PARVOc <- WGSP12_S3PARVOc%>%
+    mutate(INTERVALS = ifelse(TIME1>0 & TIME1<5,"PRE_REST",
+                     ifelse(TIME1>5.44 & TIME1<8.44, "WARM_UP",
+                     ifelse(TIME1>11.25 & TIME1<19.25, "EXERCISE", "BLANK"))))
 ```
 
 ##Session 4
@@ -897,7 +1193,20 @@ WGSP12_S4PARVOc <- WGSP12_S4PARVO%>%
   mutate(BFR = "NO")%>%
   mutate(AOP = 0)%>%
   mutate(speed = "SW")%>%
-  mutate(km_h = 4.8)
+  mutate(km_h = 4.8)%>%
+  mutate(type = "SW")%>%
+  mutate(TIME1 = (TIME*60))
+  WGSP12_S4PARVOc$TIME1 <- round(WGSP12_S4PARVOc$TIME1, digits = 0)
+  WGSP12_S4PARVOc$TIME1 <- as_hms(WGSP12_S4PARVOc$TIME1)
+  WGSP12_S4PARVOc$TIME1 <- as.character(WGSP12_S4PARVOc$TIME1)
+  WGSP12_S4PARVOc$TIME1 <- gsub(":", ".", WGSP12_S4PARVOc$TIME1, perl=TRUE)
+  WGSP12_S4PARVOc$TIME1 <- stri_sub(WGSP12_S4PARVOc$TIME1,4)
+  WGSP12_S4PARVOc$TIME1 <- as.numeric(WGSP12_S4PARVOc$TIME1)
+  
+  WGSP12_S4PARVOc <- WGSP12_S4PARVOc%>%
+    mutate(INTERVALS = ifelse(TIME1>0 & TIME1<5,"PRE_REST",
+                     ifelse(TIME1>5.34 & TIME1<8.34, "WARM_UP",
+                     ifelse(TIME1>8.55 & TIME1<16.55, "EXERCISE", "BLANK"))))
 ```
 
 ```{r}
@@ -922,7 +1231,20 @@ WGSP13_S1PARVOc <- WGSP13_S1PARVO%>%
   mutate(BFR = "YES")%>%
   mutate(AOP = 96)%>%
   mutate(speed = "SW")%>%
-  mutate(km_h = 5.1)
+  mutate(km_h = 5.1)%>%
+  mutate(type = "SWBFR")%>%
+  mutate(TIME1 = (TIME*60))
+  WGSP13_S1PARVOc$TIME1 <- round(WGSP13_S1PARVOc$TIME1, digits = 0)
+  WGSP13_S1PARVOc$TIME1 <- as_hms(WGSP13_S1PARVOc$TIME1)
+  WGSP13_S1PARVOc$TIME1 <- as.character(WGSP13_S1PARVOc$TIME1)
+  WGSP13_S1PARVOc$TIME1 <- gsub(":", ".", WGSP13_S1PARVOc$TIME1, perl=TRUE)
+  WGSP13_S1PARVOc$TIME1 <- stri_sub(WGSP13_S1PARVOc$TIME1,4)
+  WGSP13_S1PARVOc$TIME1 <- as.numeric(WGSP13_S1PARVOc$TIME1)
+  
+  WGSP13_S1PARVOc <- WGSP13_S1PARVOc%>%
+    mutate(INTERVALS = ifelse(TIME1>0 & TIME1<5,"PRE_REST",
+                     ifelse(TIME1>5.33 & TIME1<8.33, "WARM_UP",
+                     ifelse(TIME1>11.33 & TIME1<31.33, "EXERCISE", "BLANK"))))
   
 ```
 
@@ -934,7 +1256,20 @@ WGSP13_S2PARVOc <- WGSP13_S2PARVO%>%
   mutate(BFR = "NO")%>%
   mutate(AOP = 0)%>%
   mutate(speed = "SW")%>%
-  mutate(km_h = 5.1)
+  mutate(km_h = 5.1)%>%
+  mutate(type = "SW")%>%
+  mutate(TIME1 = (TIME*60))
+  WGSP13_S2PARVOc$TIME1 <- round(WGSP13_S2PARVOc$TIME1, digits = 0)
+  WGSP13_S2PARVOc$TIME1 <- as_hms(WGSP13_S2PARVOc$TIME1)
+  WGSP13_S2PARVOc$TIME1 <- as.character(WGSP13_S2PARVOc$TIME1)
+  WGSP13_S2PARVOc$TIME1 <- gsub(":", ".", WGSP13_S2PARVOc$TIME1, perl=TRUE)
+  WGSP13_S2PARVOc$TIME1 <- stri_sub(WGSP13_S2PARVOc$TIME1,4)
+  WGSP13_S2PARVOc$TIME1 <- as.numeric(WGSP13_S2PARVOc$TIME1)
+  
+  WGSP13_S2PARVOc <- WGSP13_S2PARVOc%>%
+    mutate(INTERVALS = ifelse(TIME1>0 & TIME1<5,"PRE_REST",
+                     ifelse(TIME1>5.34 & TIME1<8.34, "WARM_UP",
+                     ifelse(TIME1>8.56 & TIME1<28.56, "EXERCISE", "BLANK"))))
 ```
 
 ##Session 3
@@ -945,7 +1280,20 @@ WGSP13_S3PARVOc <- WGSP13_S3PARVO%>%
   mutate(BFR = "YES")%>%
   mutate(AOP = 96)%>%
   mutate(speed = "FW")%>%
-  mutate(km_h = 6.6)
+  mutate(km_h = 6.6)%>%
+  mutate(type = "FWBFR")%>%
+  mutate(TIME1 = (TIME*60))
+  WGSP13_S3PARVOc$TIME1 <- round(WGSP13_S3PARVOc$TIME1, digits = 0)
+  WGSP13_S3PARVOc$TIME1 <- as_hms(WGSP13_S3PARVOc$TIME1)
+  WGSP13_S3PARVOc$TIME1 <- as.character(WGSP13_S3PARVOc$TIME1)
+  WGSP13_S3PARVOc$TIME1 <- gsub(":", ".", WGSP13_S3PARVOc$TIME1, perl=TRUE)
+  WGSP13_S3PARVOc$TIME1 <- stri_sub(WGSP13_S3PARVOc$TIME1,4)
+  WGSP13_S3PARVOc$TIME1 <- as.numeric(WGSP13_S3PARVOc$TIME1)
+  
+  WGSP13_S3PARVOc <- WGSP13_S3PARVOc%>%
+    mutate(INTERVALS = ifelse(TIME1>0 & TIME1<5,"PRE_REST",
+                     ifelse(TIME1>5.25 & TIME1<8.25, "WARM_UP",
+                     ifelse(TIME1>11.30 & TIME1<31.30, "EXERCISE", "BLANK"))))
 ```
 
 ##Session 4
@@ -956,7 +1304,20 @@ WGSP13_S4PARVOc <- WGSP13_S4PARVO%>%
   mutate(BFR = "NO")%>%
   mutate(AOP = 0)%>%
   mutate(speed = "FW")%>%
-  mutate(km_h = 6.6)
+  mutate(km_h = 6.6)%>%
+  mutate(type = "FW")%>%
+  mutate(TIME1 = (TIME*60))
+  WGSP13_S4PARVOc$TIME1 <- round(WGSP13_S4PARVOc$TIME1, digits = 0)
+  WGSP13_S4PARVOc$TIME1 <- as_hms(WGSP13_S4PARVOc$TIME1)
+  WGSP13_S4PARVOc$TIME1 <- as.character(WGSP13_S4PARVOc$TIME1)
+  WGSP13_S4PARVOc$TIME1 <- gsub(":", ".", WGSP13_S4PARVOc$TIME1, perl=TRUE)
+  WGSP13_S4PARVOc$TIME1 <- stri_sub(WGSP13_S4PARVOc$TIME1,4)
+  WGSP13_S4PARVOc$TIME1 <- as.numeric(WGSP13_S4PARVOc$TIME1)
+  
+  WGSP13_S4PARVOc <- WGSP13_S4PARVOc%>%
+    mutate(INTERVALS = ifelse(TIME1>0 & TIME1<5,"PRE_REST",
+                     ifelse(TIME1>5.42 & TIME1<8.42, "WARM_UP",
+                     ifelse(TIME1>9.53 & TIME1<29.53, "EXERCISE", "BLANK"))))
 ```
 
 ```{r}
