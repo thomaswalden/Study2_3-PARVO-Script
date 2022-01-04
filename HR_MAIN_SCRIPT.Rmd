@@ -1463,8 +1463,8 @@ WGSP17_S1HR$secs <- as.numeric(WGSP17_S1HR$secs)
 
 WGSP17_S1HR <- WGSP17_S1HR%>%
   mutate(INTERVALS = ifelse(secs>0 & secs<5,"PRE_REST",
-                     ifelse(secs>5.32 & secs<8.32, "WARM_UP",
-                     ifelse(secs>11.37 & secs<24.37, "EXERCISE", "BLANK"))))
+                     ifelse(secs>5.28 & secs<8.28, "WARM_UP",
+                     ifelse(secs>11.25 & secs<31.25, "EXERCISE", "BLANK"))))
 
 ```
 
@@ -1488,8 +1488,8 @@ WGSP17_S2HR$secs <- as.numeric(WGSP17_S2HR$secs)
 
 WGSP17_S2HR <- WGSP17_S2HR%>%
   mutate(INTERVALS = ifelse(secs>0 & secs<5,"PRE_REST",
-                     ifelse(secs>5.32 & secs<8.32, "WARM_UP",
-                     ifelse(secs>8.59 & secs<21.59, "EXERCISE", "BLANK"))))
+                     ifelse(secs>5.30 & secs<8.30, "WARM_UP",
+                     ifelse(secs>8.57 & secs<28.57, "EXERCISE", "BLANK"))))
 
 ```
 
@@ -1513,8 +1513,8 @@ WGSP17_S3HR$secs <- as.numeric(WGSP17_S3HR$secs)
 
 WGSP17_S3HR <- WGSP17_S3HR%>%
   mutate(INTERVALS = ifelse(secs>0 & secs<5,"PRE_REST",
-                     ifelse(secs>5.27 & secs<8.27, "WARM_UP",
-                     ifelse(secs>11.00 & secs<31.00, "EXERCISE", "BLANK"))))
+                     ifelse(secs>5.30 & secs<8.30, "WARM_UP",
+                     ifelse(secs>11.06 & secs<31.06, "EXERCISE", "BLANK"))))
 
 ```
 
@@ -1538,8 +1538,8 @@ WGSP17_S4HR$secs <- as.numeric(WGSP17_S4HR$secs)
 
 WGSP17_S4HR <- WGSP17_S4HR%>%
   mutate(INTERVALS = ifelse(secs>0 & secs<5,"PRE_REST",
-                     ifelse(secs>5.54 & secs<8.54, "WARM_UP",
-                     ifelse(secs>9.38 & secs<29.38, "EXERCISE", "BLANK"))))
+                     ifelse(secs>5.27 & secs<8.27, "WARM_UP",
+                     ifelse(secs>8.46 & secs<28.46, "EXERCISE", "BLANK"))))
 
 ```
 
@@ -1695,8 +1695,8 @@ WGSP19_S1HR$secs <- as.numeric(WGSP19_S1HR$secs)
 
 WGSP19_S1HR <- WGSP19_S1HR%>%
   mutate(INTERVALS = ifelse(secs>0 & secs<5,"PRE_REST",
-                     ifelse(secs>5.39 & secs<8.39, "WARM_UP",
-                     ifelse(secs>11.29 & secs<31.29, "EXERCISE", "BLANK"))))
+                     ifelse(secs>6.03 & secs<9.03, "WARM_UP",
+                     ifelse(secs>17.29 & secs<37.29, "EXERCISE", "BLANK"))))
 
 ```
 
@@ -1720,8 +1720,8 @@ WGSP19_S2HR$secs <- as.numeric(WGSP19_S2HR$secs)
 
 WGSP19_S2HR <- WGSP19_S2HR%>%
   mutate(INTERVALS = ifelse(secs>0 & secs<5,"PRE_REST",
-                     ifelse(secs>5.28 & secs<8.28, "WARM_UP",
-                     ifelse(secs>8.49 & secs<28.49, "EXERCISE", "BLANK"))))
+                     ifelse(secs>5.40 & secs<8.40, "WARM_UP",
+                     ifelse(secs>9.11 & secs<29.11, "EXERCISE", "BLANK"))))
 
 ```
 
@@ -1745,8 +1745,8 @@ WGSP19_S3HR$secs <- as.numeric(WGSP19_S3HR$secs)
 
 WGSP19_S3HR <- WGSP19_S3HR%>%
   mutate(INTERVALS = ifelse(secs>0 & secs<5,"PRE_REST",
-                     ifelse(secs>6.20 & secs<9.20, "WARM_UP",
-                     ifelse(secs>13.10 & secs<33.30, "EXERCISE", "BLANK"))))
+                     ifelse(secs>5.34 & secs<8.34, "WARM_UP",
+                     ifelse(secs>11.42 & secs<31.42, "EXERCISE", "BLANK"))))
 
 ```
 
@@ -1770,8 +1770,8 @@ WGSP19_S4HR$secs <- as.numeric(WGSP19_S4HR$secs)
 
 WGSP19_S4HR <- WGSP19_S4HR%>%
   mutate(INTERVALS = ifelse(secs>0 & secs<5,"PRE_REST",
-                     ifelse(secs>5.26 & secs<8.26, "WARM_UP",
-                     ifelse(secs>8.43 & secs<28.43, "EXERCISE", "BLANK"))))
+                     ifelse(secs>6.07 & secs<9.07, "WARM_UP",
+                     ifelse(secs>9.37 & secs<29.37, "EXERCISE", "BLANK"))))
 
 ```
 
@@ -1785,7 +1785,7 @@ WGSP19_HR <- rbind(WGSP19_S1HR, WGSP19_S2HR,WGSP19_S3HR,WGSP19_S4HR)%>%
 
 #Main Data Sheet
 ```{r}
-HRBIND <- rbind(WGSP01_HR,WGSP02_HR,WGSP03_HR,WGSP04_HR,WGSP06_HR,WGSP07_HR,WGSP08_HR,WGSP09_HR,WGSP10_HR,WGSP11_HR,WGSP12_HR,WGSP13_HR,WGSP15_HR,WGSP18_HR)
+HRBIND <- rbind(WGSP01_HR,WGSP02_HR,WGSP03_HR,WGSP04_HR,WGSP06_HR,WGSP07_HR,WGSP08_HR,WGSP09_HR,WGSP10_HR,WGSP11_HR,WGSP12_HR,WGSP13_HR,WGSP15_HR,WGSP17_HR,WGSP18_HR,WGSP19_HR)
 ```
 
 ```{r}

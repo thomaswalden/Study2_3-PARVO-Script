@@ -1472,8 +1472,8 @@ WGSP17_S1PARVOc <- WGSP17_S1PARVO%>%
   
   WGSP17_S1PARVOc <- WGSP17_S1PARVOc%>%
     mutate(INTERVALS = ifelse(TIME1>0 & TIME1<5,"PRE_REST",
-                     ifelse(TIME1>5.32 & TIME1<8.32, "WARM_UP",
-                     ifelse(TIME1>11.37 & TIME1<24.37, "EXERCISE", "BLANK"))))
+                     ifelse(TIME1>5.28 & TIME1<8.28, "WARM_UP",
+                     ifelse(TIME1>11.25 & TIME1<31.25, "EXERCISE", "BLANK"))))
 ```
 
 ##Session 2
@@ -1496,8 +1496,8 @@ WGSP17_S2PARVOc <- WGSP17_S2PARVO%>%
   
   WGSP17_S2PARVOc <- WGSP17_S2PARVOc%>%
     mutate(INTERVALS = ifelse(TIME1>0 & TIME1<5,"PRE_REST",
-                     ifelse(TIME1>5.32 & TIME1<8.32, "WARM_UP",
-                     ifelse(TIME1>8.59 & TIME1<21.59, "EXERCISE", "BLANK"))))
+                     ifelse(TIME1>5.30 & TIME1<8.30, "WARM_UP",
+                     ifelse(TIME1>8.57 & TIME1<28.57, "EXERCISE", "BLANK"))))
 ```
 
 ##Session 3
@@ -1520,8 +1520,8 @@ WGSP17_S3PARVOc <- WGSP17_S3PARVO%>%
   
   WGSP17_S3PARVOc <- WGSP17_S3PARVOc%>%
     mutate(INTERVALS = ifelse(TIME1>0 & TIME1<5,"PRE_REST",
-                     ifelse(TIME1>5.27 & TIME1<8.27, "WARM_UP",
-                     ifelse(TIME1>11.00 & TIME1<31.00, "EXERCISE", "BLANK"))))
+                     ifelse(TIME1>5.30 & TIME1<8.30, "WARM_UP",
+                     ifelse(TIME1>11.06 & TIME1<31.06, "EXERCISE", "BLANK"))))
 ```
 
 ##Session 4
@@ -1544,8 +1544,8 @@ WGSP17_S4PARVOc <- WGSP17_S4PARVO%>%
   
   WGSP17_S4PARVOc <- WGSP17_S4PARVOc%>%
     mutate(INTERVALS = ifelse(TIME1>0 & TIME1<5,"PRE_REST",
-                     ifelse(TIME1>5.54 & TIME1<8.54, "WARM_UP",
-                     ifelse(TIME1>9.38 & TIME1<29.38, "EXERCISE", "BLANK"))))
+                     ifelse(TIME1>5.27 & TIME1<8.27, "WARM_UP",
+                     ifelse(TIME1>8.46 & TIME1<28.46, "EXERCISE", "BLANK"))))
 ```
 
 ```{r}
@@ -1693,8 +1693,8 @@ WGSP19_S1PARVOc <- WGSP19_S1PARVO%>%
   
   WGSP19_S1PARVOc <- WGSP19_S1PARVOc%>%
     mutate(INTERVALS = ifelse(TIME1>0 & TIME1<5,"PRE_REST",
-                     ifelse(TIME1>5.39 & TIME1<8.39, "WARM_UP",
-                     ifelse(TIME1>11.29 & TIME1<31.29, "EXERCISE", "BLANK"))))
+                     ifelse(TIME1>6.03 & TIME1<9.03, "WARM_UP",
+                     ifelse(TIME1>17.29 & TIME1<37.29, "EXERCISE", "BLANK"))))
   
 ```
 
@@ -1718,8 +1718,8 @@ WGSP19_S2PARVOc <- WGSP19_S2PARVO%>%
   
   WGSP19_S2PARVOc <- WGSP19_S2PARVOc%>%
     mutate(INTERVALS = ifelse(TIME1>0 & TIME1<5,"PRE_REST",
-                     ifelse(TIME1>5.28 & TIME1<8.28, "WARM_UP",
-                     ifelse(TIME1>8.49 & TIME1<28.49, "EXERCISE", "BLANK"))))
+                     ifelse(TIME1>5.40 & TIME1<8.40, "WARM_UP",
+                     ifelse(TIME1>9.11 & TIME1<29.11, "EXERCISE", "BLANK"))))
 ```
 
 ##Session 3
@@ -1742,8 +1742,8 @@ WGSP19_S3PARVOc <- WGSP19_S3PARVO%>%
   
   WGSP19_S3PARVOc <- WGSP19_S3PARVOc%>%
     mutate(INTERVALS = ifelse(TIME1>0 & TIME1<5,"PRE_REST",
-                     ifelse(TIME1>6.20 & TIME1<9.20, "WARM_UP",
-                     ifelse(TIME1>13.10 & TIME1<33.30, "EXERCISE", "BLANK"))))
+                     ifelse(TIME1>5.34 & TIME1<8.34, "WARM_UP",
+                     ifelse(TIME1>11.42 & TIME1<31.42, "EXERCISE", "BLANK"))))
 ```
 
 ##Session 4
@@ -1766,8 +1766,8 @@ WGSP19_S4PARVOc <- WGSP19_S4PARVO%>%
   
   WGSP19_S4PARVOc <- WGSP19_S4PARVOc%>%
     mutate(INTERVALS = ifelse(TIME1>0 & TIME1<5,"PRE_REST",
-                     ifelse(TIME1>5.26 & TIME1<8.26, "WARM_UP",
-                     ifelse(TIME1>8.43 & TIME1<28.43, "EXERCISE", "BLANK"))))
+                     ifelse(TIME1>6.07 & TIME1<9.07, "WARM_UP",
+                     ifelse(TIME1>9.37 & TIME1<29.37, "EXERCISE", "BLANK"))))
 ```
 
 ```{r}
@@ -1777,7 +1777,7 @@ WGSP19_bind <- rbind(WGSP19_S1PARVOc,WGSP19_S2PARVOc,WGSP19_S3PARVOc,WGSP19_S4PA
 ```
 #Study Bind
 ```{r}
-Study2PARVOBIND <- rbind(WGSP01_bind,WGSP02_bind,WGSP03_bind,WGSP04_bind,WGSP06_bind,WGSP07_bind,WGSP08_bind,WGSP09_bind,WGSP11_bind,WGSP12_bind,WGSP13_bind,WGSP15_bind,WGSP18_bind)
+Study2PARVOBIND <- rbind(WGSP01_bind,WGSP02_bind,WGSP03_bind,WGSP04_bind,WGSP06_bind,WGSP07_bind,WGSP08_bind,WGSP09_bind,WGSP11_bind,WGSP12_bind,WGSP13_bind,WGSP15_bind,WGSP17_bind,WGSP18_bind,WGSP19_bind)
 ```
 
 ```{r}
