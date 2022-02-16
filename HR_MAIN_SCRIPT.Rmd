@@ -1319,6 +1319,123 @@ WGSP13_HR <- rbind(WGSP13_S1HR, WGSP13_S2HR,WGSP13_S3HR,WGSP13_S4HR)%>%
   mutate(PerHRMAX = ((hr/HRMAX)*100))
 ```
 
+#WGSP014
+```{r}
+WGSP14_S1HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP14//Session1//Parvo//GARMIN_S1.CSV")
+WGSP14_S2HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP14//Session2//Parvo//GARMIN_S2.CSV")
+WGSP14_S3HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP14//Session3//Parvo//GARMIN_S3.CSV")
+WGSP14_S4HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP14//Session4//Parvo//GARMIN_S4.CSV")
+```
+
+##SESSION 1
+```{r}
+WGSP14_S1HR <- WGSP14_S1HR%>%
+  mutate(session = 1)%>%
+  mutate(participant = "P14")%>%
+  mutate(BFR = "YES")%>%
+  mutate(AOP = 100)%>%
+  mutate(speed = "FW")%>%
+  mutate(km_h = 6.1)%>%
+  mutate(type = "FWBFR")
+WGSP14_S1HR$session <- as.factor(WGSP14_S1HR$session)
+WGSP14_S1HR$secs <- as_hms(WGSP14_S1HR$secs)
+WGSP14_S1HR = subset(WGSP14_S1HR,select = -c(cad,km,kph,nm,watts,alt,lon,lat,headwind,slope,temp,interval,lrbalance,lte,rte,lps,rps,smo2,thb,o2hb,hhb))
+WGSP14_S1HR$secs <- as.character(WGSP14_S1HR$secs)
+WGSP14_S1HR$secs <- gsub(":", ".", WGSP14_S1HR$secs, perl=TRUE)
+WGSP14_S1HR$secs <- stri_sub(WGSP14_S1HR$secs,4)
+WGSP14_S1HR$secs <- as.numeric(WGSP14_S1HR$secs)
+
+WGSP14_S1HR <- WGSP14_S1HR%>%
+   mutate(INTERVALS = ifelse(secs>0 & secs<5,"PRE_REST",
+                     ifelse(secs>6.03 & secs<9.03, "WARM_UP",
+                     ifelse(secs>17.29 & secs<37.29, "EXERCISE", "BLANK"))))
+
+```
+
+##SESSION 2
+```{r}
+WGSP14_S2HR <- WGSP14_S2HR%>%
+  mutate(session = 2)%>%
+  mutate(participant = "P14")%>%
+  mutate(BFR = "NO")%>%
+  mutate(AOP = 0)%>%
+  mutate(speed = "FW")%>%
+  mutate(km_h = 6.1)%>%
+  mutate(type = "FW")
+WGSP14_S2HR$session <- as.factor(WGSP14_S2HR$session)
+WGSP14_S2HR$secs <- as_hms(WGSP14_S2HR$secs)
+WGSP14_S2HR = subset(WGSP14_S2HR,select = -c(cad,km,kph,nm,watts,alt,lon,lat,headwind,slope,temp,interval,lrbalance,lte,rte,lps,rps,smo2,thb,o2hb,hhb))
+WGSP14_S2HR$secs <- as.character(WGSP14_S2HR$secs)
+WGSP14_S2HR$secs <- gsub(":", ".", WGSP14_S2HR$secs, perl=TRUE)
+WGSP14_S2HR$secs <- stri_sub(WGSP14_S2HR$secs,4)
+WGSP14_S2HR$secs <- as.numeric(WGSP14_S2HR$secs)
+
+WGSP14_S2HR <- WGSP14_S2HR%>%
+  mutate(INTERVALS = ifelse(secs>0 & secs<5,"PRE_REST",
+                     ifelse(secs>5.40 & secs<8.40, "WARM_UP",
+                     ifelse(secs>9.11 & secs<29.11, "EXERCISE", "BLANK"))))
+
+```
+
+##SESSION 3
+```{r}
+WGSP14_S3HR <- WGSP14_S3HR%>%
+  mutate(session = 3)%>%
+  mutate(participant = "P14")%>%
+  mutate(BFR = "YES")%>%
+  mutate(AOP = 100)%>%
+  mutate(speed = "SW")%>%
+  mutate(km_h = 4.8)%>%
+  mutate(type = "SWBFR")
+WGSP14_S3HR$session <- as.factor(WGSP14_S3HR$session)
+WGSP14_S3HR$secs <- as_hms(WGSP14_S3HR$secs)
+WGSP14_S3HR = subset(WGSP14_S3HR,select = -c(cad,km,kph,nm,watts,alt,lon,lat,headwind,slope,temp,interval,lrbalance,lte,rte,lps,rps,smo2,thb,o2hb,hhb))
+WGSP14_S3HR$secs <- as.character(WGSP14_S3HR$secs)
+WGSP14_S3HR$secs <- gsub(":", ".", WGSP14_S3HR$secs, perl=TRUE)
+WGSP14_S3HR$secs <- stri_sub(WGSP14_S3HR$secs,4)
+WGSP14_S3HR$secs <- as.numeric(WGSP14_S3HR$secs)
+
+WGSP14_S3HR <- WGSP14_S3HR%>%
+  mutate(INTERVALS = ifelse(secs>0 & secs<5,"PRE_REST",
+                     ifelse(secs>5.34 & secs<8.34, "WARM_UP",
+                     ifelse(secs>11.42 & secs<31.42, "EXERCISE", "BLANK"))))
+
+```
+
+##SESSION 4
+```{r}
+WGSP14_S4HR <- WGSP14_S4HR%>%
+  mutate(session = 4)%>%
+  mutate(participant = "P14")%>%
+  mutate(BFR = "NO")%>%
+  mutate(AOP = 0)%>%
+  mutate(speed = "SW")%>%
+  mutate(km_h = 4.8)%>%
+  mutate(type = "SW")
+WGSP14_S4HR$session <- as.factor(WGSP14_S4HR$session)
+WGSP14_S4HR$secs <- as_hms(WGSP14_S4HR$secs)
+WGSP14_S4HR = subset(WGSP14_S4HR,select = -c(cad,km,kph,nm,watts,alt,lon,lat,headwind,slope,temp,interval,lrbalance,lte,rte,lps,rps,smo2,thb,o2hb,hhb))
+WGSP14_S4HR$secs <- as.character(WGSP14_S4HR$secs)
+WGSP14_S4HR$secs <- gsub(":", ".", WGSP14_S4HR$secs, perl=TRUE)
+WGSP14_S4HR$secs <- stri_sub(WGSP14_S4HR$secs,4)
+WGSP14_S4HR$secs <- as.numeric(WGSP14_S4HR$secs)
+
+WGSP14_S4HR <- WGSP14_S4HR%>%
+   mutate(INTERVALS = ifelse(secs>0 & secs<5,"PRE_REST",
+                     ifelse(secs>6.07 & secs<9.07, "WARM_UP",
+                     ifelse(secs>9.37 & secs<29.37, "EXERCISE", "BLANK"))))
+
+```
+
+```{r}
+WGSP14_HR <- rbind(WGSP14_S1HR, WGSP14_S2HR,WGSP14_S3HR,WGSP14_S4HR)%>%
+   mutate(age = 22)%>%
+  mutate(sex = "female")%>%
+  mutate(HRMAX = (211-(0.64*age)))%>%
+  mutate(PerHRMAX = ((hr/HRMAX)*100))
+```
+
+
 #WGSP015
 ```{r}
 WGSP15_S1HR <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP15//Session1//Parvo//GARMIN_S1.CSV")
@@ -1785,7 +1902,7 @@ WGSP19_HR <- rbind(WGSP19_S1HR, WGSP19_S2HR,WGSP19_S3HR,WGSP19_S4HR)%>%
 
 #Main Data Sheet
 ```{r}
-HRBIND2 <- rbind(WGSP01_HR,WGSP02_HR,WGSP03_HR,WGSP04_HR,WGSP06_HR,WGSP07_HR,WGSP08_HR,WGSP09_HR,WGSP10_HR,WGSP11_HR,WGSP12_HR,WGSP13_HR,WGSP15_HR,WGSP17_HR,WGSP18_HR,WGSP19_HR)
+HRBIND <- rbind(WGSP01_HR,WGSP02_HR,WGSP03_HR,WGSP04_HR,WGSP06_HR,WGSP07_HR,WGSP08_HR,WGSP09_HR,WGSP10_HR,WGSP11_HR,WGSP12_HR,WGSP13_HR,WGSP14_HR,WGSP15_HR,WGSP17_HR,WGSP18_HR,WGSP19_HR)
 ```
 
 ```{r}
@@ -1795,6 +1912,7 @@ write.csv(HRBIND,"C:\\Users\\thoma\\OneDrive - Murdoch University\\Desktop\\PhD 
 #Summary
 ```{r}
 HRSUM <- HRBIND%>%
-summarySE(measurevar = "hr", groupvar =c("speed","BFR","type","INTERVALS","participant"), na.rm = TRUE, conf.interval = 0.95, .drop = TRUE)
+summarySE(measurevar = "hr", groupvar =c("speed","BFR","type","INTERVALS","participant"), na.rm = TRUE, conf.interval = 0.95, .drop = TRUE)%>%
+  filter(!INTERVALS %in% "BLANK")
 
 ```

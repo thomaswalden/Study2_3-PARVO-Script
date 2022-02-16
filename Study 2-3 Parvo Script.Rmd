@@ -1334,6 +1334,117 @@ WGSP13_bind <- rbind(WGSP13_S1PARVOc,WGSP13_S2PARVOc,WGSP13_S3PARVOc,WGSP13_S4PA
   mutate(sex = "male")
 ```
 
+#WGSP14
+```{r}
+WGSP14_S1PARVO <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP14//Session1//Parvo//WGSP014_S1.csv")
+WGSP14_S2PARVO <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP14//Session2//Parvo//WGSP014_S2.csv")
+WGSP14_S3PARVO <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP14//Session3//Parvo//WGSP014_S3.csv")
+WGSP14_S4PARVO <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP14//Session4//Parvo//WGSP014_S4.csv")
+```
+
+##Session 1
+```{r}
+WGSP14_S1PARVOc <- WGSP14_S1PARVO%>%
+  mutate(session = 1)%>%
+  mutate(participant = "P14")%>%
+  mutate(BFR = "YES")%>%
+  mutate(AOP = 100)%>%
+  mutate(speed = "FW")%>%
+  mutate(km_h = 6.1)%>%
+  mutate(type = "FWBFR")%>%
+  mutate(TIME1 = (TIME*60))
+  WGSP14_S1PARVOc$TIME1 <- round(WGSP14_S1PARVOc$TIME1, digits = 0)
+  WGSP14_S1PARVOc$TIME1 <- as_hms(WGSP14_S1PARVOc$TIME1)
+  WGSP14_S1PARVOc$TIME1 <- as.character(WGSP14_S1PARVOc$TIME1)
+  WGSP14_S1PARVOc$TIME1 <- gsub(":", ".", WGSP14_S1PARVOc$TIME1, perl=TRUE)
+  WGSP14_S1PARVOc$TIME1 <- stri_sub(WGSP14_S1PARVOc$TIME1,4)
+  WGSP14_S1PARVOc$TIME1 <- as.numeric(WGSP14_S1PARVOc$TIME1)
+  
+  WGSP14_S1PARVOc <- WGSP14_S1PARVOc%>%
+    mutate(INTERVALS = ifelse(TIME1>0 & TIME1<5,"PRE_REST",
+                     ifelse(TIME1>5.45 & TIME1<8.45, "WARM_UP",
+                     ifelse(TIME1>12.37 & TIME1<32.37, "EXERCISE", "BLANK"))))
+  
+```
+
+##Session 2
+```{r}
+WGSP14_S2PARVOc <- WGSP14_S2PARVO%>%
+  mutate(session = 2)%>%
+  mutate(participant = "P14")%>%
+  mutate(BFR = "NO")%>%
+  mutate(AOP = 0)%>%
+  mutate(speed = "FW")%>%
+  mutate(km_h = 6.1)%>%
+  mutate(type = "FW")%>%
+  mutate(TIME1 = (TIME*60))
+  WGSP14_S2PARVOc$TIME1 <- round(WGSP14_S2PARVOc$TIME1, digits = 0)
+  WGSP14_S2PARVOc$TIME1 <- as_hms(WGSP14_S2PARVOc$TIME1)
+  WGSP14_S2PARVOc$TIME1 <- as.character(WGSP14_S2PARVOc$TIME1)
+  WGSP14_S2PARVOc$TIME1 <- gsub(":", ".", WGSP14_S2PARVOc$TIME1, perl=TRUE)
+  WGSP14_S2PARVOc$TIME1 <- stri_sub(WGSP14_S2PARVOc$TIME1,4)
+  WGSP14_S2PARVOc$TIME1 <- as.numeric(WGSP14_S2PARVOc$TIME1)
+  
+  WGSP14_S2PARVOc <- WGSP14_S2PARVOc%>%
+    mutate(INTERVALS = ifelse(TIME1>0 & TIME1<5,"PRE_REST",
+                     ifelse(TIME1>5.30 & TIME1<8.30, "WARM_UP",
+                     ifelse(TIME1>8.54 & TIME1<28.54, "EXERCISE", "BLANK"))))
+```
+
+##Session 3
+```{r}
+WGSP14_S3PARVOc <- WGSP14_S3PARVO%>%
+  mutate(session = 3)%>%
+  mutate(participant = "P14")%>%
+  mutate(BFR = "YES")%>%
+  mutate(AOP = 100)%>%
+  mutate(speed = "SW")%>%
+  mutate(km_h = 4.8)%>%
+  mutate(type = "SWBFR")%>%
+  mutate(TIME1 = (TIME*60))
+  WGSP14_S3PARVOc$TIME1 <- round(WGSP14_S3PARVOc$TIME1, digits = 0)
+  WGSP14_S3PARVOc$TIME1 <- as_hms(WGSP14_S3PARVOc$TIME1)
+  WGSP14_S3PARVOc$TIME1 <- as.character(WGSP14_S3PARVOc$TIME1)
+  WGSP14_S3PARVOc$TIME1 <- gsub(":", ".", WGSP14_S3PARVOc$TIME1, perl=TRUE)
+  WGSP14_S3PARVOc$TIME1 <- stri_sub(WGSP14_S3PARVOc$TIME1,4)
+  WGSP14_S3PARVOc$TIME1 <- as.numeric(WGSP14_S3PARVOc$TIME1)
+  
+  WGSP14_S3PARVOc <- WGSP14_S3PARVOc%>%
+    mutate(INTERVALS = ifelse(TIME1>0 & TIME1<5,"PRE_REST",
+                     ifelse(TIME1>5.27 & TIME1<8.27, "WARM_UP",
+                     ifelse(TIME1>11.54 & TIME1<31.54, "EXERCISE", "BLANK"))))
+```
+
+##Session 4
+```{r}
+WGSP14_S4PARVOc <- WGSP14_S4PARVO%>%
+  mutate(session = 4)%>%
+  mutate(participant = "P14")%>%
+  mutate(BFR = "NO")%>%
+  mutate(AOP = 0)%>%
+  mutate(speed = "SW")%>%
+  mutate(km_h = 4.8)%>%
+  mutate(type = "SW")%>%
+  mutate(TIME1 = (TIME*60))
+  WGSP14_S4PARVOc$TIME1 <- round(WGSP14_S4PARVOc$TIME1, digits = 0)
+  WGSP14_S4PARVOc$TIME1 <- as_hms(WGSP14_S4PARVOc$TIME1)
+  WGSP14_S4PARVOc$TIME1 <- as.character(WGSP14_S4PARVOc$TIME1)
+  WGSP14_S4PARVOc$TIME1 <- gsub(":", ".", WGSP14_S4PARVOc$TIME1, perl=TRUE)
+  WGSP14_S4PARVOc$TIME1 <- stri_sub(WGSP14_S4PARVOc$TIME1,4)
+  WGSP14_S4PARVOc$TIME1 <- as.numeric(WGSP14_S4PARVOc$TIME1)
+  
+  WGSP14_S4PARVOc <- WGSP14_S4PARVOc%>%
+    mutate(INTERVALS = ifelse(TIME1>0 & TIME1<5,"PRE_REST",
+                     ifelse(TIME1>5.47 & TIME1<8.47, "WARM_UP",
+                     ifelse(TIME1>11.29 & TIME1<31.29, "EXERCISE", "BLANK"))))
+```
+
+```{r}
+WGSP14_bind <- rbind(WGSP14_S1PARVOc,WGSP14_S2PARVOc,WGSP14_S3PARVOc,WGSP14_S4PARVOc)%>%
+  mutate(age = 22)%>%
+  mutate(sex = "female")
+```
+
 #WGSP15
 ```{r}
 WGSP15_S1PARVO <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP15//Session1//Parvo//WGSP015_S1.csv")
@@ -1777,11 +1888,11 @@ WGSP19_bind <- rbind(WGSP19_S1PARVOc,WGSP19_S2PARVOc,WGSP19_S3PARVOc,WGSP19_S4PA
 ```
 #Study Bind
 ```{r}
-Study2PARVOBIND <- rbind(WGSP01_bind,WGSP02_bind,WGSP03_bind,WGSP04_bind,WGSP06_bind,WGSP07_bind,WGSP08_bind,WGSP09_bind,WGSP11_bind,WGSP12_bind,WGSP13_bind,WGSP15_bind,WGSP17_bind,WGSP18_bind,WGSP19_bind)
+Study2PARVOBIND <- rbind(WGSP01_bind,WGSP02_bind,WGSP03_bind,WGSP04_bind,WGSP06_bind,WGSP07_bind,WGSP08_bind,WGSP09_bind,WGSP11_bind,WGSP12_bind,WGSP13_bind,WGSP14_bind,WGSP15_bind,WGSP17_bind,WGSP18_bind,WGSP19_bind)
 ```
 
 ```{r}
-write.csv(Study2PARVOBIND,"C:\\Users\\thoma\\OneDrive - Murdoch University\\Desktop\\PhD 2021\\Study 2 and 3\\AAADATA\\Main CSV sheets\\RAW_PARVO_DATA(13-12-2021).csv",row.names=FALSE)
+write.csv(Study2PARVOBIND,"C:\\Users\\thoma\\OneDrive - Murdoch University\\Desktop\\PhD 2021\\Study 2 and 3\\AAADATA\\Main CSV sheets\\RAW_PARVO_DATA(16-02-2022).csv",row.names=FALSE)
 ```
 
 #Summary
