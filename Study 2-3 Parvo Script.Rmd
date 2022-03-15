@@ -1998,22 +1998,151 @@ WGSP20_bind <- rbind(WGSP20_S1PARVOc,WGSP20_S2PARVOc,WGSP20_S3PARVOc,WGSP20_S4PA
   mutate(sex = "female")
 ```
 
-#Study Bind
+#WGSP021
 ```{r}
-Study2PARVOBIND <- rbind(WGSP01_bind,WGSP02_bind,WGSP03_bind,WGSP04_bind,WGSP06_bind,WGSP07_bind,WGSP08_bind,WGSP09_bind,WGSP11_bind,WGSP12_bind,WGSP13_bind,WGSP14_bind,WGSP15_bind,WGSP17_bind,WGSP18_bind,WGSP19_bind,WGSP20_bind)
+WGSP21_S1PARVO <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP21//Session1//Parvo//WGSP021_S1.csv")
+WGSP21_S2PARVO <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP21//Session2//Parvo//WGSP021_S2.csv")
+WGSP21_S3PARVO <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP21//Session3//Parvo//WGSP021_S3.csv")
+WGSP21_S4PARVO <- read.csv("C://Users//thoma//OneDrive - Murdoch University//Desktop//PhD 2021//Study 2 and 3//AAADATA//Participants//WGSP21//Session4//Parvo//WGSP021_S4.csv")
+```
+
+##Session 1
+```{r}
+WGSP21_S1PARVOc <- WGSP21_S1PARVO%>%
+  mutate(session = 1)%>%
+  mutate(participant = "P21")%>%
+  mutate(BFR = "YES")%>%
+  mutate(AOP = 112)%>%
+  mutate(speed = "SW")%>%
+  mutate(km_h = 4.5)%>%
+  mutate(type = "SWBFR")%>%
+  mutate(TIME1 = (TIME*60))
+  WGSP21_S1PARVOc$TIME1 <- round(WGSP21_S1PARVOc$TIME1, digits = 0)
+  WGSP21_S1PARVOc$TIME1 <- as_hms(WGSP21_S1PARVOc$TIME1)
+  WGSP21_S1PARVOc$TIME1 <- as.character(WGSP21_S1PARVOc$TIME1)
+  WGSP21_S1PARVOc$TIME1 <- gsub(":", ".", WGSP21_S1PARVOc$TIME1, perl=TRUE)
+  WGSP21_S1PARVOc$TIME1 <- stri_sub(WGSP21_S1PARVOc$TIME1,4)
+  WGSP21_S1PARVOc$TIME1 <- as.numeric(WGSP21_S1PARVOc$TIME1)
+  
+  WGSP21_S1PARVOc <- WGSP21_S1PARVOc%>%
+    mutate(INTERVALS = ifelse(TIME1>0 & TIME1<5,"PRE_REST",
+                     ifelse(TIME1>5.31 & TIME1<8.31, "WARM_UP",
+                     ifelse(TIME1>14.46 & TIME1<34.46, "EXERCISE", "BLANK"))))
+  
+```
+
+##Session 2
+```{r}
+WGSP21_S2PARVOc <- WGSP21_S2PARVO%>%
+  mutate(session = 2)%>%
+  mutate(participant = "P21")%>%
+  mutate(BFR = "NO")%>%
+  mutate(AOP = 0)%>%
+  mutate(speed = "SW")%>%
+  mutate(km_h = 4.5)%>%
+  mutate(type = "SW")%>%
+  mutate(TIME1 = (TIME*60))
+  WGSP21_S2PARVOc$TIME1 <- round(WGSP21_S2PARVOc$TIME1, digits = 0)
+  WGSP21_S2PARVOc$TIME1 <- as_hms(WGSP21_S2PARVOc$TIME1)
+  WGSP21_S2PARVOc$TIME1 <- as.character(WGSP21_S2PARVOc$TIME1)
+  WGSP21_S2PARVOc$TIME1 <- gsub(":", ".", WGSP21_S2PARVOc$TIME1, perl=TRUE)
+  WGSP21_S2PARVOc$TIME1 <- stri_sub(WGSP21_S2PARVOc$TIME1,4)
+  WGSP21_S2PARVOc$TIME1 <- as.numeric(WGSP21_S2PARVOc$TIME1)
+  
+  WGSP21_S2PARVOc <- WGSP21_S2PARVOc%>%
+    mutate(INTERVALS = ifelse(TIME1>0 & TIME1<5,"PRE_REST",
+                     ifelse(TIME1>5.27 & TIME1<8.27, "WARM_UP",
+                     ifelse(TIME1>8.42 & TIME1<28.42, "EXERCISE", "BLANK"))))
+```
+
+##Session 3
+```{r}
+WGSP21_S3PARVOc <- WGSP21_S3PARVO%>%
+  mutate(session = 3)%>%
+  mutate(participant = "P21")%>%
+  mutate(BFR = "YES")%>%
+  mutate(AOP = 112)%>%
+  mutate(speed = "FW")%>%
+  mutate(km_h = 5.8)%>%
+  mutate(type = "FWBFR")%>%
+  mutate(TIME1 = (TIME*60))
+  WGSP21_S3PARVOc$TIME1 <- round(WGSP21_S3PARVOc$TIME1, digits = 0)
+  WGSP21_S3PARVOc$TIME1 <- as_hms(WGSP21_S3PARVOc$TIME1)
+  WGSP21_S3PARVOc$TIME1 <- as.character(WGSP21_S3PARVOc$TIME1)
+  WGSP21_S3PARVOc$TIME1 <- gsub(":", ".", WGSP21_S3PARVOc$TIME1, perl=TRUE)
+  WGSP21_S3PARVOc$TIME1 <- stri_sub(WGSP21_S3PARVOc$TIME1,4)
+  WGSP21_S3PARVOc$TIME1 <- as.numeric(WGSP21_S3PARVOc$TIME1)
+  
+  WGSP21_S3PARVOc <- WGSP21_S3PARVOc%>%
+    mutate(INTERVALS = ifelse(TIME1>0 & TIME1<5,"PRE_REST",
+                     ifelse(TIME1>5.27 & TIME1<8.27, "WARM_UP",
+                     ifelse(TIME1>12.16 & TIME1<14.46, "EXERCISE", "BLANK"))))
+```
+
+##Session 4
+```{r}
+WGSP21_S4PARVOc <- WGSP21_S4PARVO%>%
+  mutate(session = 4)%>%
+  mutate(participant = "P21")%>%
+  mutate(BFR = "NO")%>%
+  mutate(AOP = 0)%>%
+  mutate(speed = "FW")%>%
+  mutate(km_h = 5.8)%>%
+  mutate(type = "FW")%>%
+  mutate(TIME1 = (TIME*60))
+  WGSP21_S4PARVOc$TIME1 <- round(WGSP21_S4PARVOc$TIME1, digits = 0)
+  WGSP21_S4PARVOc$TIME1 <- as_hms(WGSP21_S4PARVOc$TIME1)
+  WGSP21_S4PARVOc$TIME1 <- as.character(WGSP21_S4PARVOc$TIME1)
+  WGSP21_S4PARVOc$TIME1 <- gsub(":", ".", WGSP21_S4PARVOc$TIME1, perl=TRUE)
+  WGSP21_S4PARVOc$TIME1 <- stri_sub(WGSP21_S4PARVOc$TIME1,4)
+  WGSP21_S4PARVOc$TIME1 <- as.numeric(WGSP21_S4PARVOc$TIME1)
+  
+  WGSP21_S4PARVOc <- WGSP21_S4PARVOc%>%
+    mutate(INTERVALS = ifelse(TIME1>0 & TIME1<5,"PRE_REST",
+                     ifelse(TIME1>5.19 & TIME1<8.19, "WARM_UP",
+                     ifelse(TIME1>8.58 & TIME1<12.58, "EXERCISE", "BLANK"))))
 ```
 
 ```{r}
-write.csv(Study2PARVOBIND,"C:\\Users\\thoma\\OneDrive - Murdoch University\\Desktop\\PhD 2021\\Study 2 and 3\\AAADATA\\Main CSV sheets\\RAW_PARVO_DATA(16-02-2022).csv",row.names=FALSE)
+WGSP21_bind <- rbind(WGSP21_S1PARVOc,WGSP21_S2PARVOc,WGSP21_S3PARVOc,WGSP21_S4PARVOc)%>%
+  mutate(age = 24)%>%
+  mutate(sex = "female")
+```
+
+#Study Bind
+```{r}
+Study2PARVOBIND <- rbind(WGSP01_bind,WGSP02_bind,WGSP03_bind,WGSP04_bind,WGSP06_bind,WGSP07_bind,WGSP08_bind,WGSP09_bind,WGSP11_bind,WGSP12_bind,WGSP13_bind,WGSP14_bind,WGSP15_bind,WGSP17_bind,WGSP18_bind,WGSP19_bind,WGSP20_bind,WGSP21_bind)
+```
+
+```{r}
+write.csv(Study2PARVOBIND,"C:\\Users\\thoma\\OneDrive - Murdoch University\\Desktop\\PhD 2021\\Study 2 and 3\\AAADATA\\Main CSV sheets\\RAW_PARVO_DATA(15-03-2022).csv",row.names=FALSE)
 ```
 
 #Summary
 ```{r}
 VESUM <- Study2PARVOBIND%>%
-summarySE(measurevar = "VE", groupvar =c("speed","BFR","participant"), na.rm = TRUE, conf.interval = 0.95, .drop = TRUE)
+summarySE(measurevar = "VE", groupvar =c("INTERVALS", "BFR", "speed"), na.rm = TRUE, conf.interval = 0.95, .drop = TRUE)
 
 FECO2SUM <- Study2PARVOBIND%>%
 summarySE(measurevar = "FECO2", groupvar =c("INTERVALS", "BFR", "speed"), na.rm = TRUE, conf.interval = 0.95, .drop = TRUE)%>%
   filter(!INTERVALS %in% "BLANK")
+
+RERSUM <- Study2PARVOBIND%>%
+summarySE(measurevar = "RER", groupvar =c("INTERVALS", "BFR", "speed"), na.rm = TRUE, conf.interval = 0.95, .drop = TRUE)
+
+RRSUM <- Study2PARVOBIND%>%
+summarySE(measurevar = "RR", groupvar =c("INTERVALS", "BFR", "speed"), na.rm = TRUE, conf.interval = 0.95, .drop = TRUE)%>%
+  filter(!INTERVALS %in% "BLANK")
+
+```
+
+```{r}
+write.csv(VESUM,"C:\\Users\\thoma\\OneDrive - Murdoch University\\Desktop\\PhD 2021\\Study 2 and 3\\AAADATA\\Main CSV sheets\\VESUM(15-03-2022).csv",row.names=FALSE)
+
+write.csv(FECO2SUM,"C:\\Users\\thoma\\OneDrive - Murdoch University\\Desktop\\PhD 2021\\Study 2 and 3\\AAADATA\\Main CSV sheets\\FECO2SUM(15-03-2022).csv",row.names=FALSE)
+
+write.csv(RERSUM,"C:\\Users\\thoma\\OneDrive - Murdoch University\\Desktop\\PhD 2021\\Study 2 and 3\\AAADATA\\Main CSV sheets\\RERSUM(15-03-2022).csv",row.names=FALSE)
+
+write.csv(RRSUM,"C:\\Users\\thoma\\OneDrive - Murdoch University\\Desktop\\PhD 2021\\Study 2 and 3\\AAADATA\\Main CSV sheets\\RRSUM(15-03-2022).csv",row.names=FALSE)
 ```
 
