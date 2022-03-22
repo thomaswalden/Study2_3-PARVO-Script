@@ -2260,7 +2260,7 @@ write.csv(HRBIND,"C:\\Users\\thoma\\OneDrive - Murdoch University\\Desktop\\PhD 
 #Summary
 ```{r}
 HRSUM <- HRBIND%>%
-summarySE(measurevar = "hr", groupvar =c("speed","BFR","INTERVALS","participant"), na.rm = TRUE, conf.interval = 0.95, .drop = TRUE)%>%
+summarySE(measurevar = "hr", groupvar =c("speed","BFR","INTERVALS"), na.rm = TRUE, conf.interval = 0.95, .drop = TRUE)%>%
   filter(!INTERVALS %in% "BLANK")
 
 PerHRMaxSUM <- HRBIND%>%
