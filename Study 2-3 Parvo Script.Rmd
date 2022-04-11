@@ -2333,7 +2333,7 @@ WGSP23_bind <- rbind(WGSP23_S1PARVOc,WGSP23_S2PARVOc,WGSP23_S3PARVOc,WGSP23_S4PA
 
 #Study Bind
 ```{r}
-Study2PARVOBIND <- rbind(WGSP01_bind,WGSP02_bind,WGSP03_bind,WGSP04_bind,WGSP06_bind,WGSP07_bind,WGSP08_bind,WGSP09_bind,WGSP11_bind,WGSP12_bind,WGSP13_bind,WGSP14_bind,WGSP15_bind,WGSP17_bind,WGSP18_bind,WGSP19_bind,WGSP20_bind,WGSP21_bind,WGSP22_bind,WGSP23_bind)
+Study2PARVOBIND <- rbind(WGSP01_bind,WGSP02_bind,WGSP03_bind,WGSP04_bind,WGSP06_bind,WGSP07_bind,WGSP08_bind,WGSP09_bind,WGSP10_bind,WGSP11_bind,WGSP12_bind,WGSP13_bind,WGSP14_bind,WGSP15_bind,WGSP17_bind,WGSP18_bind,WGSP19_bind,WGSP20_bind,WGSP21_bind,WGSP22_bind,WGSP23_bind)
 ```
 
 ```{r}
