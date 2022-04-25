@@ -34,8 +34,832 @@ table(ttt$events)
 framenames <- read.table("C:\\Users\\thoma\\OneDrive - Murdoch University\\Desktop\\PhD 2021\\Study 2 and 3\\3D Motion Capture\\Output header template.txt",stringsAsFactors = F)
 #colnames(texttest) <- framenames
 ```
+#WGSP01
+##S1
+```{r}
+txt_dir <- list.dirs("C:\\Users\\thoma\\OneDrive - Murdoch University\\Desktop\\PhD 2021\\Study 2 and 3\\AAADATA\\Participants\\WGSP01\\Session1\\3D MOCAP\\Visual 3D\\")
+txt_files <- list.files(txt_dir)
 
-#WGSP04 S2
+#REMONES .TXT
+txt_names <- substr(txt_files,7,nchar(txt_files)-4)
+
+#REMOVE SPACE - CAN REMOVE ONCE FILES HAVE BEEN RENAMED OUT OF VISUAL 3D
+txt_names <- gsub("[[:space:]]", "", txt_names)
+
+#EMPTY LIST THAT THE LOOP WILL POPULATE INTO
+P1SESSION1 <- list()
+
+#START OF THE 1ST LOOP
+for(i in 1:length(txt_files)){
+#i <- 20
+  txt<-read.table(paste0(txt_dir,txt_files[i]), blank.lines.skip = F)
+  colnames(txt) <- framenames
+  #ADDS IN SESSION SPECIFIC DATA
+  txt$time <- txt$FRAME/150
+  txt$time <- round(txt$time, 5)
+  #txt$events <- NULL
+  txt$participant <- "P1"
+  txt$session <- 1
+  txt$KM <- 6.7
+  txt$BFR <- "YES"
+  txt$TYPE <- "FWBFR"
+  txt$speed <- "FW"
+  txt$AOP <- 88
+  txt$min <- as.numeric(txt_names[i])
+  txt$min <-txt$min-8
+  
+  minact<- as.numeric(txt_names[i]) -6
+#assign(paste0("P2","S1","min",minact),txt, envir = .GlobalEnv)
+   #P2SESSION1[[i]] <- txt
+
+
+  #CREATES INDIVIDUAL FRAME FOR EACH EVENT MARKER (EG, LHS, RHS, LTO, RTO)
+  LEFT_HEEL_STRIKE <- txt$LHS
+  LEFT_HEEL_STRIKE<-na.omit(LEFT_HEEL_STRIKE)
+  LEFT_HEEL_STRIKE <-round(LEFT_HEEL_STRIKE, 5)
+  
+  
+  LEFT_TOE_OFF <- txt$LTO
+  LEFT_TOE_OFF<-na.omit(LEFT_TOE_OFF)
+  LEFT_TOE_OFF <-round(LEFT_TOE_OFF, 5)
+  
+  RIGHT_HEEL_STRIKE <- txt$RHS
+  RIGHT_HEEL_STRIKE<-na.omit(RIGHT_HEEL_STRIKE)
+  RIGHT_HEEL_STRIKE <-round(RIGHT_HEEL_STRIKE, 5)
+  
+  RIGHT_TOE_OFF <- txt$RTO
+  RIGHT_TOE_OFF<-na.omit(RIGHT_TOE_OFF)
+  RIGHT_TOE_OFF <-round(RIGHT_TOE_OFF, 5)
+  
+  #THIS IS THE START OF THE SECOND LOOP
+  
+  #MAKE SURE 1) FRAME NAME MATCHES ABOVE 2) EACH LOOP HAS ITS OWN LETTER 3) MAKE SURE YOU RENAME THE EVENT TEXT ("LHS" [EG LINE 135])
+      for(j in 1:length(LEFT_HEEL_STRIKE)){
+      #j <- 2
+      lhstrike <- LEFT_HEEL_STRIKE[j]
+      txt$events[txt$time == lhstrike] <- "LHS"
+      
+      }
+  
+      for(k in 1:length(LEFT_TOE_OFF)){
+      #j <- 2
+      ltoff <- LEFT_TOE_OFF[k]
+      txt$events[txt$time == ltoff] <- "LTO"
+      
+      }
+  
+      for(l in 1:length(RIGHT_HEEL_STRIKE)){
+      #j <- 2
+      rhstrike <- RIGHT_HEEL_STRIKE[l]
+      txt$events[txt$time == rhstrike] <- "RHS"
+      
+      }
+  
+      for(m in 1:length(RIGHT_TOE_OFF)){
+      #j <- 2
+      rtoff <- RIGHT_TOE_OFF[m]
+      txt$events[txt$time == rtoff] <- "RTO"
+      
+      }
+  
+  #assign(paste0("P4","Trial",txt_names[i]), txt, envir = .GlobalEnv)
+  assign(paste0("P1","S1","min",minact),txt, envir = .GlobalEnv)
+
+  P1SESSION1[[i]] <- txt
+   #return(listofdfs)
+ 
+}
+
+WGSP01_S1 <- rbind(P1S1min1,P1S1min2,P1S1min3,P1S1min4,P1S1min5,P1S1min6,P1S1min7,P1S1min8,P1S1min9,P1S1min10,P1S1min11,P1S1min12,P1S1min13,P1S1min14,P1S1min15,P1S1min16,P1S1min17,P1S1min18,P1S1min19,P1S1min20)
+
+WGSP01_S1 = subset(WGSP01_S1,select = -c(LHS,LTO,RHS,RTO))
+
+```
+##S2
+```{r}
+txt_dir <- list.dirs("C:\\Users\\thoma\\OneDrive - Murdoch University\\Desktop\\PhD 2021\\Study 2 and 3\\AAADATA\\Participants\\WGSP01\\Session2\\3D MOCAP\\Visual 3D\\")
+txt_files <- list.files(txt_dir)
+
+#REMONES .TXT
+txt_names <- substr(txt_files,7,nchar(txt_files)-4)
+
+#REMOVE SPACE - CAN REMOVE ONCE FILES HAVE BEEN RENAMED OUT OF VISUAL 3D
+txt_names <- gsub("[[:space:]]", "", txt_names)
+
+#EMPTY LIST THAT THE LOOP WILL POPULATE INTO
+P1SESSION2 <- list()
+
+#START OF THE 1ST LOOP
+for(i in 1:length(txt_files)){
+#i <- 20
+  txt<-read.table(paste0(txt_dir,txt_files[i]), blank.lines.skip = F)
+  colnames(txt) <- framenames
+  #ADDS IN SESSION SPECIFIC DATA
+  txt$time <- txt$FRAME/150
+  txt$time <- round(txt$time, 5)
+  #txt$events <- NULL
+  txt$participant <- "P1"
+  txt$session <- 2
+  txt$KM <- 6.7
+  txt$BFR <- "NO"
+  txt$TYPE <- "FW"
+  txt$speed <- "FW"
+  txt$AOP <- 0
+  txt$min <- as.numeric(txt_names[i])
+  txt$min <-txt$min-6
+  
+  minact<- as.numeric(txt_names[i]) -6
+#assign(paste0("P2","S1","min",minact),txt, envir = .GlobalEnv)
+   #P2SESSION1[[i]] <- txt
+
+
+  #CREATES INDIVIDUAL FRAME FOR EACH EVENT MARKER (EG, LHS, RHS, LTO, RTO)
+  LEFT_HEEL_STRIKE <- txt$LHS
+  LEFT_HEEL_STRIKE<-na.omit(LEFT_HEEL_STRIKE)
+  LEFT_HEEL_STRIKE <-round(LEFT_HEEL_STRIKE, 5)
+  
+  
+  LEFT_TOE_OFF <- txt$LTO
+  LEFT_TOE_OFF<-na.omit(LEFT_TOE_OFF)
+  LEFT_TOE_OFF <-round(LEFT_TOE_OFF, 5)
+  
+  RIGHT_HEEL_STRIKE <- txt$RHS
+  RIGHT_HEEL_STRIKE<-na.omit(RIGHT_HEEL_STRIKE)
+  RIGHT_HEEL_STRIKE <-round(RIGHT_HEEL_STRIKE, 5)
+  
+  RIGHT_TOE_OFF <- txt$RTO
+  RIGHT_TOE_OFF<-na.omit(RIGHT_TOE_OFF)
+  RIGHT_TOE_OFF <-round(RIGHT_TOE_OFF, 5)
+  
+  #THIS IS THE START OF THE SECOND LOOP
+  
+  #MAKE SURE 1) FRAME NAME MATCHES ABOVE 2) EACH LOOP HAS ITS OWN LETTER 3) MAKE SURE YOU RENAME THE EVENT TEXT ("LHS" [EG LINE 135])
+      for(j in 1:length(LEFT_HEEL_STRIKE)){
+      #j <- 2
+      lhstrike <- LEFT_HEEL_STRIKE[j]
+      txt$events[txt$time == lhstrike] <- "LHS"
+      
+      }
+  
+      for(k in 1:length(LEFT_TOE_OFF)){
+      #j <- 2
+      ltoff <- LEFT_TOE_OFF[k]
+      txt$events[txt$time == ltoff] <- "LTO"
+      
+      }
+  
+      for(l in 1:length(RIGHT_HEEL_STRIKE)){
+      #j <- 2
+      rhstrike <- RIGHT_HEEL_STRIKE[l]
+      txt$events[txt$time == rhstrike] <- "RHS"
+      
+      }
+  
+      for(m in 1:length(RIGHT_TOE_OFF)){
+      #j <- 2
+      rtoff <- RIGHT_TOE_OFF[m]
+      txt$events[txt$time == rtoff] <- "RTO"
+      
+      }
+  
+  #assign(paste0("P4","Trial",txt_names[i]), txt, envir = .GlobalEnv)
+  assign(paste0("P1","S2","min",minact),txt, envir = .GlobalEnv)
+
+  P1SESSION2[[i]] <- txt
+   #return(listofdfs)
+ 
+}
+
+WGSP01_S2 <- rbind(P1S2min1,P1S2min2,P1S2min3,P1S2min4,P1S2min5,P1S2min6,P1S2min7,P1S2min8,P1S2min9,P1S2min10,P1S2min11,P1S2min12,P1S2min13,P1S2min14,P1S2min15,P1S2min16,P1S2min17,P1S2min18,P1S2min19,P1S2min20)
+
+WGSP01_S2 = subset(WGSP01_S2,select = -c(LHS,LTO,RHS,RTO))
+
+```
+
+##S3
+```{r}
+txt_dir <- list.dirs("C:\\Users\\thoma\\OneDrive - Murdoch University\\Desktop\\PhD 2021\\Study 2 and 3\\AAADATA\\Participants\\WGSP01\\Session3\\3D MOCAP\\Visual 3D\\")
+txt_files <- list.files(txt_dir)
+
+#REMONES .TXT
+txt_names <- substr(txt_files,7,nchar(txt_files)-4)
+
+#REMOVE SPACE - CAN REMOVE ONCE FILES HAVE BEEN RENAMED OUT OF VISUAL 3D
+txt_names <- gsub("[[:space:]]", "", txt_names)
+
+#EMPTY LIST THAT THE LOOP WILL POPULATE INTO
+P1SESSION3 <- list()
+
+#START OF THE 1ST LOOP
+for(i in 1:length(txt_files)){
+#i <- 20
+  txt<-read.table(paste0(txt_dir,txt_files[i]), blank.lines.skip = F)
+  colnames(txt) <- framenames
+  #ADDS IN SESSION SPECIFIC DATA
+  txt$time <- txt$FRAME/150
+  txt$time <- round(txt$time, 5)
+  #txt$events <- NULL
+  txt$participant <- "P1"
+  txt$session <- 3
+  txt$KM <- 5.2
+  txt$BFR <- "YES"
+  txt$TYPE <- "SWBFR"
+  txt$speed <- "SW"
+  txt$AOP <- 88
+  txt$min <- as.numeric(txt_names[i])
+  txt$min <-txt$min-6
+  
+  minact<- as.numeric(txt_names[i]) -6
+#assign(paste0("P2","S1","min",minact),txt, envir = .GlobalEnv)
+   #P2SESSION1[[i]] <- txt
+
+
+  #CREATES INDIVIDUAL FRAME FOR EACH EVENT MARKER (EG, LHS, RHS, LTO, RTO)
+  LEFT_HEEL_STRIKE <- txt$LHS
+  LEFT_HEEL_STRIKE<-na.omit(LEFT_HEEL_STRIKE)
+  LEFT_HEEL_STRIKE <-round(LEFT_HEEL_STRIKE, 5)
+  
+  
+  LEFT_TOE_OFF <- txt$LTO
+  LEFT_TOE_OFF<-na.omit(LEFT_TOE_OFF)
+  LEFT_TOE_OFF <-round(LEFT_TOE_OFF, 5)
+  
+  RIGHT_HEEL_STRIKE <- txt$RHS
+  RIGHT_HEEL_STRIKE<-na.omit(RIGHT_HEEL_STRIKE)
+  RIGHT_HEEL_STRIKE <-round(RIGHT_HEEL_STRIKE, 5)
+  
+  RIGHT_TOE_OFF <- txt$RTO
+  RIGHT_TOE_OFF<-na.omit(RIGHT_TOE_OFF)
+  RIGHT_TOE_OFF <-round(RIGHT_TOE_OFF, 5)
+  
+  #THIS IS THE START OF THE SECOND LOOP
+  
+  #MAKE SURE 1) FRAME NAME MATCHES ABOVE 2) EACH LOOP HAS ITS OWN LETTER 3) MAKE SURE YOU RENAME THE EVENT TEXT ("LHS" [EG LINE 135])
+      for(j in 1:length(LEFT_HEEL_STRIKE)){
+      #j <- 2
+      lhstrike <- LEFT_HEEL_STRIKE[j]
+      txt$events[txt$time == lhstrike] <- "LHS"
+      
+      }
+  
+      for(k in 1:length(LEFT_TOE_OFF)){
+      #j <- 2
+      ltoff <- LEFT_TOE_OFF[k]
+      txt$events[txt$time == ltoff] <- "LTO"
+      
+      }
+  
+      for(l in 1:length(RIGHT_HEEL_STRIKE)){
+      #j <- 2
+      rhstrike <- RIGHT_HEEL_STRIKE[l]
+      txt$events[txt$time == rhstrike] <- "RHS"
+      
+      }
+  
+      for(m in 1:length(RIGHT_TOE_OFF)){
+      #j <- 2
+      rtoff <- RIGHT_TOE_OFF[m]
+      txt$events[txt$time == rtoff] <- "RTO"
+      
+      }
+  
+  #assign(paste0("P4","Trial",txt_names[i]), txt, envir = .GlobalEnv)
+  assign(paste0("P1","S3","min",minact),txt, envir = .GlobalEnv)
+
+  P1SESSION3[[i]] <- txt
+   #return(listofdfs)
+ 
+}
+
+WGSP01_S3 <- rbind(P1S3min1,P1S3min2,P1S3min3,P1S3min4,P1S3min5,P1S3min6,P1S3min7,P1S3min8,P1S3min9,P1S3min10,P1S3min11,P1S3min12,P1S3min13,P1S3min14,P1S3min15,P1S3min16,P1S3min17,P1S3min18,P1S3min19,P1S3min20)
+
+WGSP01_S3 = subset(WGSP01_S3,select = -c(LHS,LTO,RHS,RTO))
+
+```
+
+##S4
+```{r}
+txt_dir <- list.dirs("C:\\Users\\thoma\\OneDrive - Murdoch University\\Desktop\\PhD 2021\\Study 2 and 3\\AAADATA\\Participants\\WGSP01\\Session4\\3D MOCAP\\Visual 3D\\")
+txt_files <- list.files(txt_dir)
+
+#REMONES .TXT
+txt_names <- substr(txt_files,7,nchar(txt_files)-4)
+
+#REMOVE SPACE - CAN REMOVE ONCE FILES HAVE BEEN RENAMED OUT OF VISUAL 3D
+txt_names <- gsub("[[:space:]]", "", txt_names)
+
+#EMPTY LIST THAT THE LOOP WILL POPULATE INTO
+P1SESSION4 <- list()
+
+#START OF THE 1ST LOOP
+for(i in 1:length(txt_files)){
+#i <- 20
+  txt<-read.table(paste0(txt_dir,txt_files[i]), blank.lines.skip = F)
+  colnames(txt) <- framenames
+  #ADDS IN SESSION SPECIFIC DATA
+  txt$time <- txt$FRAME/150
+  txt$time <- round(txt$time, 5)
+  #txt$events <- NULL
+  txt$participant <- "P1"
+  txt$session <- 4
+  txt$KM <- 5.2
+  txt$BFR <- "NO"
+  txt$TYPE <- "SW"
+  txt$speed <- "SW"
+  txt$AOP <- 0
+  txt$min <- as.numeric(txt_names[i])
+  txt$min <-txt$min-6
+  
+  minact<- as.numeric(txt_names[i]) -6
+#assign(paste0("P2","S1","min",minact),txt, envir = .GlobalEnv)
+   #P2SESSION1[[i]] <- txt
+
+
+  #CREATES INDIVIDUAL FRAME FOR EACH EVENT MARKER (EG, LHS, RHS, LTO, RTO)
+  LEFT_HEEL_STRIKE <- txt$LHS
+  LEFT_HEEL_STRIKE<-na.omit(LEFT_HEEL_STRIKE)
+  LEFT_HEEL_STRIKE <-round(LEFT_HEEL_STRIKE, 5)
+  
+  
+  LEFT_TOE_OFF <- txt$LTO
+  LEFT_TOE_OFF<-na.omit(LEFT_TOE_OFF)
+  LEFT_TOE_OFF <-round(LEFT_TOE_OFF, 5)
+  
+  RIGHT_HEEL_STRIKE <- txt$RHS
+  RIGHT_HEEL_STRIKE<-na.omit(RIGHT_HEEL_STRIKE)
+  RIGHT_HEEL_STRIKE <-round(RIGHT_HEEL_STRIKE, 5)
+  
+  RIGHT_TOE_OFF <- txt$RTO
+  RIGHT_TOE_OFF<-na.omit(RIGHT_TOE_OFF)
+  RIGHT_TOE_OFF <-round(RIGHT_TOE_OFF, 5)
+  
+  #THIS IS THE START OF THE SECOND LOOP
+  
+  #MAKE SURE 1) FRAME NAME MATCHES ABOVE 2) EACH LOOP HAS ITS OWN LETTER 3) MAKE SURE YOU RENAME THE EVENT TEXT ("LHS" [EG LINE 135])
+      for(j in 1:length(LEFT_HEEL_STRIKE)){
+      #j <- 2
+      lhstrike <- LEFT_HEEL_STRIKE[j]
+      txt$events[txt$time == lhstrike] <- "LHS"
+      
+      }
+  
+      for(k in 1:length(LEFT_TOE_OFF)){
+      #j <- 2
+      ltoff <- LEFT_TOE_OFF[k]
+      txt$events[txt$time == ltoff] <- "LTO"
+      
+      }
+  
+      for(l in 1:length(RIGHT_HEEL_STRIKE)){
+      #j <- 2
+      rhstrike <- RIGHT_HEEL_STRIKE[l]
+      txt$events[txt$time == rhstrike] <- "RHS"
+      
+      }
+  
+      for(m in 1:length(RIGHT_TOE_OFF)){
+      #j <- 2
+      rtoff <- RIGHT_TOE_OFF[m]
+      txt$events[txt$time == rtoff] <- "RTO"
+      
+      }
+  
+  #assign(paste0("P4","Trial",txt_names[i]), txt, envir = .GlobalEnv)
+  assign(paste0("P1","S4","min",minact),txt, envir = .GlobalEnv)
+
+  P1SESSION4[[i]] <- txt
+   #return(listofdfs)
+ 
+}
+
+WGSP01_S4 <- rbind(P1S4min1,P1S4min2,P1S4min3,P1S4min4,P1S4min5,P1S4min6,P1S4min7,P1S4min8,P1S4min9,P1S4min10,P1S4min11,P1S4min12,P1S4min13,P1S4min14,P1S4min15,P1S4min16,P1S4min17,P1S4min18,P1S4min19,P1S4min20)
+
+WGSP01_S4 = subset(WGSP01_S4,select = -c(LHS,LTO,RHS,RTO))
+
+```
+##WGSP01 Bind
+```{r}
+WGSP01_bind <- rbind(WGSP01_S1,WGSP01_S2,WGSP01_S3,WGSP01_S4)
+```
+
+#WGSP02
+##S1
+```{r}
+txt_dir <- list.dirs("C:\\Users\\thoma\\OneDrive - Murdoch University\\Desktop\\PhD 2021\\Study 2 and 3\\AAADATA\\Participants\\WGSP02\\Session1\\3D MOCAP\\Visual 3D\\")
+txt_files <- list.files(txt_dir)
+
+#REMONES .TXT
+txt_names <- substr(txt_files,7,nchar(txt_files)-4)
+
+#REMOVE SPACE - CAN REMOVE ONCE FILES HAVE BEEN RENAMED OUT OF VISUAL 3D
+txt_names <- gsub("[[:space:]]", "", txt_names)
+
+#EMPTY LIST THAT THE LOOP WILL POPULATE INTO
+P2SESSION1 <- list()
+
+#START OF THE 1ST LOOP
+for(i in 1:length(txt_files)){
+#i <- 20
+  txt<-read.table(paste0(txt_dir,txt_files[i]), blank.lines.skip = F)
+  colnames(txt) <- framenames
+  #ADDS IN SESSION SPECIFIC DATA
+  txt$time <- txt$FRAME/150
+  txt$time <- round(txt$time, 5)
+  #txt$events <- NULL
+  txt$participant <- "P2"
+  txt$session <- 1
+  txt$KM <- 5.5
+  txt$BFR <- "YES"
+  txt$TYPE <- "SWBFR"
+  txt$speed <- "SW"
+  txt$AOP <- 102
+  txt$min <- as.numeric(txt_names[i])
+  txt$min <-txt$min-6
+  
+  minact<- as.numeric(txt_names[i]) -6
+#assign(paste0("P2","S1","min",minact),txt, envir = .GlobalEnv)
+   #P2SESSION1[[i]] <- txt
+
+
+  #CREATES INDIVIDUAL FRAME FOR EACH EVENT MARKER (EG, LHS, RHS, LTO, RTO)
+  LEFT_HEEL_STRIKE <- txt$LHS
+  LEFT_HEEL_STRIKE<-na.omit(LEFT_HEEL_STRIKE)
+  LEFT_HEEL_STRIKE <-round(LEFT_HEEL_STRIKE, 5)
+  
+  
+  LEFT_TOE_OFF <- txt$LTO
+  LEFT_TOE_OFF<-na.omit(LEFT_TOE_OFF)
+  LEFT_TOE_OFF <-round(LEFT_TOE_OFF, 5)
+  
+  RIGHT_HEEL_STRIKE <- txt$RHS
+  RIGHT_HEEL_STRIKE<-na.omit(RIGHT_HEEL_STRIKE)
+  RIGHT_HEEL_STRIKE <-round(RIGHT_HEEL_STRIKE, 5)
+  
+  RIGHT_TOE_OFF <- txt$RTO
+  RIGHT_TOE_OFF<-na.omit(RIGHT_TOE_OFF)
+  RIGHT_TOE_OFF <-round(RIGHT_TOE_OFF, 5)
+  
+  #THIS IS THE START OF THE SECOND LOOP
+  
+  #MAKE SURE 1) FRAME NAME MATCHES ABOVE 2) EACH LOOP HAS ITS OWN LETTER 3) MAKE SURE YOU RENAME THE EVENT TEXT ("LHS" [EG LINE 135])
+      for(j in 1:length(LEFT_HEEL_STRIKE)){
+      #j <- 2
+      lhstrike <- LEFT_HEEL_STRIKE[j]
+      txt$events[txt$time == lhstrike] <- "LHS"
+      
+      }
+  
+      for(k in 1:length(LEFT_TOE_OFF)){
+      #j <- 2
+      ltoff <- LEFT_TOE_OFF[k]
+      txt$events[txt$time == ltoff] <- "LTO"
+      
+      }
+  
+      for(l in 1:length(RIGHT_HEEL_STRIKE)){
+      #j <- 2
+      rhstrike <- RIGHT_HEEL_STRIKE[l]
+      txt$events[txt$time == rhstrike] <- "RHS"
+      
+      }
+  
+      for(m in 1:length(RIGHT_TOE_OFF)){
+      #j <- 2
+      rtoff <- RIGHT_TOE_OFF[m]
+      txt$events[txt$time == rtoff] <- "RTO"
+      
+      }
+  
+  #assign(paste0("P4","Trial",txt_names[i]), txt, envir = .GlobalEnv)
+  assign(paste0("P2","S1","min",minact),txt, envir = .GlobalEnv)
+
+  P2SESSION1[[i]] <- txt
+   #return(listofdfs)
+ 
+}
+
+WGSP02_S1 <- rbind(P2S1min1,P2S1min2,P2S1min3,P2S1min4,P2S1min5,P2S1min6,P2S1min7,P2S1min8,P2S1min9,P2S1min10,P2S1min11,P2S1min12,P2S1min13,P2S1min14,P2S1min15,P2S1min16,P2S1min17,P2S1min18,P2S1min19,P2S1min20)
+
+WGSP02_S1 = subset(WGSP02_S1,select = -c(LHS,LTO,RHS,RTO))
+
+```
+
+##S2
+```{r}
+txt_dir <- list.dirs("C:\\Users\\thoma\\OneDrive - Murdoch University\\Desktop\\PhD 2021\\Study 2 and 3\\AAADATA\\Participants\\WGSP02\\Session2\\3D MOCAP\\Visual 3D\\")
+txt_files <- list.files(txt_dir)
+
+#REMONES .TXT
+txt_names <- substr(txt_files,7,nchar(txt_files)-4)
+
+#REMOVE SPACE - CAN REMOVE ONCE FILES HAVE BEEN RENAMED OUT OF VISUAL 3D
+txt_names <- gsub("[[:space:]]", "", txt_names)
+
+#EMPTY LIST THAT THE LOOP WILL POPULATE INTO
+P2SESSION2 <- list()
+
+#START OF THE 1ST LOOP
+for(i in 1:length(txt_files)){
+#i <- 7
+  txt<-read.table(paste0(txt_dir,txt_files[i]), blank.lines.skip = F)
+  colnames(txt) <- framenames
+  #ADDS IN SESSION SPECIFIC DATA
+  txt$time <- txt$FRAME/150
+  txt$time <- round(txt$time, 5)
+  #txt$events <- NULL
+  txt$participant <- "P2"
+  txt$session <- 2
+  txt$KM <- 5.5
+  txt$BFR <- "NO"
+  txt$TYPE <- "SW"
+  txt$speed <- "SW"
+  txt$AOP <- 0
+  txt$min <- as.numeric(txt_names[i])
+  txt$min <-txt$min-6
+  
+  minact<- as.numeric(txt_names[i]) -6
+#assign(paste0("P2","S1","min",minact),txt, envir = .GlobalEnv)
+   #P2SESSION1[[i]] <- txt
+
+
+  #CREATES INDIVIDUAL FRAME FOR EACH EVENT MARKER (EG, LHS, RHS, LTO, RTO)
+  LEFT_HEEL_STRIKE <- txt$LHS
+  LEFT_HEEL_STRIKE<-na.omit(LEFT_HEEL_STRIKE)
+  LEFT_HEEL_STRIKE <-round(LEFT_HEEL_STRIKE, 5)
+  
+  
+  LEFT_TOE_OFF <- txt$LTO
+  LEFT_TOE_OFF<-na.omit(LEFT_TOE_OFF)
+  LEFT_TOE_OFF <-round(LEFT_TOE_OFF, 5)
+  
+  RIGHT_HEEL_STRIKE <- txt$RHS
+  RIGHT_HEEL_STRIKE<-na.omit(RIGHT_HEEL_STRIKE)
+  RIGHT_HEEL_STRIKE <-round(RIGHT_HEEL_STRIKE, 5)
+  
+  RIGHT_TOE_OFF <- txt$RTO
+  RIGHT_TOE_OFF<-na.omit(RIGHT_TOE_OFF)
+  RIGHT_TOE_OFF <-round(RIGHT_TOE_OFF, 5)
+  
+  #THIS IS THE START OF THE SECOND LOOP
+  
+  #MAKE SURE 1) FRAME NAME MATCHES ABOVE 2) EACH LOOP HAS ITS OWN LETTER 3) MAKE SURE YOU RENAME THE EVENT TEXT ("LHS" [EG LINE 135])
+      for(j in 1:length(LEFT_HEEL_STRIKE)){
+      #j <- 2
+      lhstrike <- LEFT_HEEL_STRIKE[j]
+      txt$events[txt$time == lhstrike] <- "LHS"
+      
+      }
+  
+      for(k in 1:length(LEFT_TOE_OFF)){
+      #j <- 2
+      ltoff <- LEFT_TOE_OFF[k]
+      txt$events[txt$time == ltoff] <- "LTO"
+      
+      }
+  
+      for(l in 1:length(RIGHT_HEEL_STRIKE)){
+      #j <- 2
+      rhstrike <- RIGHT_HEEL_STRIKE[l]
+      txt$events[txt$time == rhstrike] <- "RHS"
+      
+      }
+  
+      for(m in 1:length(RIGHT_TOE_OFF)){
+      #j <- 2
+      rtoff <- RIGHT_TOE_OFF[m]
+      txt$events[txt$time == rtoff] <- "RTO"
+      
+      }
+  
+  #assign(paste0("P4","Trial",txt_names[i]), txt, envir = .GlobalEnv)
+  assign(paste0("P2","S2","min",minact),txt, envir = .GlobalEnv)
+
+  P2SESSION2[[i]] <- txt
+   #return(listofdfs)
+ 
+}
+
+WGSP02_S2 <- rbind(P2S2min1,P2S2min2,P2S2min3,P2S2min4,P2S2min5,P2S2min6,P2S2min7,P2S2min8,P2S2min9,P2S2min10,P2S2min11,P2S2min12,P2S2min13,P2S2min14,P2S2min15,P2S2min16,P2S2min17,P2S2min18,P2S2min19,P2S2min20)
+
+WGSP02_S2 = subset(WGSP02_S2,select = -c(LHS,LTO,RHS,RTO))
+
+```
+
+##S3
+```{r}
+txt_dir <- list.dirs("C:\\Users\\thoma\\OneDrive - Murdoch University\\Desktop\\PhD 2021\\Study 2 and 3\\AAADATA\\Participants\\WGSP02\\Session3\\3D MOCAP\\Visual 3D\\")
+txt_files <- list.files(txt_dir)
+
+#REMONES .TXT
+txt_names <- substr(txt_files,7,nchar(txt_files)-4)
+
+#REMOVE SPACE - CAN REMOVE ONCE FILES HAVE BEEN RENAMED OUT OF VISUAL 3D
+txt_names <- gsub("[[:space:]]", "", txt_names)
+
+#EMPTY LIST THAT THE LOOP WILL POPULATE INTO
+P2SESSION3 <- list()
+
+#START OF THE 1ST LOOP
+for(i in 1:length(txt_files)){
+#i <- 16
+  txt<-read.table(paste0(txt_dir,txt_files[i]), blank.lines.skip = F)
+  colnames(txt) <- framenames
+  #ADDS IN SESSION SPECIFIC DATA
+  txt$time <- txt$FRAME/150
+  txt$time <- round(txt$time, 5)
+  #txt$events <- NULL
+  txt$participant <- "P2"
+  txt$session <- 3
+  txt$KM <- 7.1
+  txt$BFR <- "YES"
+  txt$TYPE <- "FWBFR"
+  txt$speed <- "FW"
+  txt$AOP <- 102
+  txt$min <- as.numeric(txt_names[i])
+  txt$min <-txt$min-6
+  
+  minact<- as.numeric(txt_names[i]) -6
+#assign(paste0("P2","S1","min",minact),txt, envir = .GlobalEnv)
+   #P2SESSION1[[i]] <- txt
+
+
+  #CREATES INDIVIDUAL FRAME FOR EACH EVENT MARKER (EG, LHS, RHS, LTO, RTO)
+  LEFT_HEEL_STRIKE <- txt$LHS
+  LEFT_HEEL_STRIKE<-na.omit(LEFT_HEEL_STRIKE)
+  LEFT_HEEL_STRIKE <-round(LEFT_HEEL_STRIKE, 5)
+  
+  
+  LEFT_TOE_OFF <- txt$LTO
+  LEFT_TOE_OFF<-na.omit(LEFT_TOE_OFF)
+  LEFT_TOE_OFF <-round(LEFT_TOE_OFF, 5)
+  
+  RIGHT_HEEL_STRIKE <- txt$RHS
+  RIGHT_HEEL_STRIKE<-na.omit(RIGHT_HEEL_STRIKE)
+  RIGHT_HEEL_STRIKE <-round(RIGHT_HEEL_STRIKE, 5)
+  
+  RIGHT_TOE_OFF <- txt$RTO
+  RIGHT_TOE_OFF<-na.omit(RIGHT_TOE_OFF)
+  RIGHT_TOE_OFF <-round(RIGHT_TOE_OFF, 5)
+  
+  #THIS IS THE START OF THE SECOND LOOP
+  
+  #MAKE SURE 1) FRAME NAME MATCHES ABOVE 2) EACH LOOP HAS ITS OWN LETTER 3) MAKE SURE YOU RENAME THE EVENT TEXT ("LHS" [EG LINE 135])
+      for(j in 1:length(LEFT_HEEL_STRIKE)){
+      #j <- 2
+      lhstrike <- LEFT_HEEL_STRIKE[j]
+      txt$events[txt$time == lhstrike] <- "LHS"
+      
+      }
+  
+      for(k in 1:length(LEFT_TOE_OFF)){
+      #j <- 2
+      ltoff <- LEFT_TOE_OFF[k]
+      txt$events[txt$time == ltoff] <- "LTO"
+      
+      }
+  
+      for(l in 1:length(RIGHT_HEEL_STRIKE)){
+      #j <- 2
+      rhstrike <- RIGHT_HEEL_STRIKE[l]
+      txt$events[txt$time == rhstrike] <- "RHS"
+      
+      }
+  
+      for(m in 1:length(RIGHT_TOE_OFF)){
+      #j <- 2
+      rtoff <- RIGHT_TOE_OFF[m]
+      txt$events[txt$time == rtoff] <- "RTO"
+      
+      }
+  
+  #assign(paste0("P4","Trial",txt_names[i]), txt, envir = .GlobalEnv)
+  assign(paste0("P2","S3","min",minact),txt, envir = .GlobalEnv)
+
+  P2SESSION3[[i]] <- txt
+   #return(listofdfs)
+ 
+}
+
+WGSP02_S3 <- rbind(P2S3min1,P2S3min2,P2S3min3,P2S3min4,P2S3min5,P2S3min6,P2S3min7,P2S3min8,P2S3min9,P2S3min10,P2S3min11,P2S3min12,P2S3min13,P2S3min14,P2S3min15,P2S3min16,P2S3min17,P2S3min18,P2S3min19,P2S3min20)
+
+WGSP02_S3 = subset(WGSP02_S3,select = -c(LHS,LTO,RHS,RTO))
+
+```
+
+##S4
+```{r}
+txt_dir <- list.dirs("C:\\Users\\thoma\\OneDrive - Murdoch University\\Desktop\\PhD 2021\\Study 2 and 3\\AAADATA\\Participants\\WGSP02\\Session4\\3D MOCAP\\Visual 3D\\")
+txt_files <- list.files(txt_dir)
+
+#REMONES .TXT
+txt_names <- substr(txt_files,7,nchar(txt_files)-4)
+
+#REMOVE SPACE - CAN REMOVE ONCE FILES HAVE BEEN RENAMED OUT OF VISUAL 3D
+txt_names <- gsub("[[:space:]]", "", txt_names)
+
+#EMPTY LIST THAT THE LOOP WILL POPULATE INTO
+P2SESSION4 <- list()
+
+#START OF THE 1ST LOOP
+for(i in 1:length(txt_files)){
+#i <- 16
+  txt<-read.table(paste0(txt_dir,txt_files[i]), blank.lines.skip = F)
+  colnames(txt) <- framenames
+  #ADDS IN SESSION SPECIFIC DATA
+  txt$time <- txt$FRAME/150
+  txt$time <- round(txt$time, 5)
+  #txt$events <- NULL
+  txt$participant <- "P2"
+  txt$session <- 4
+  txt$KM <- 7.1
+  txt$BFR <- "YES"
+  txt$TYPE <- "FW"
+  txt$speed <- "FW"
+  txt$AOP <- 0
+  txt$min <- as.numeric(txt_names[i])
+  txt$min <-txt$min-6
+  
+  minact<- as.numeric(txt_names[i]) -6
+#assign(paste0("P2","S1","min",minact),txt, envir = .GlobalEnv)
+   #P2SESSION1[[i]] <- txt
+
+
+  #CREATES INDIVIDUAL FRAME FOR EACH EVENT MARKER (EG, LHS, RHS, LTO, RTO)
+  LEFT_HEEL_STRIKE <- txt$LHS
+  LEFT_HEEL_STRIKE<-na.omit(LEFT_HEEL_STRIKE)
+  LEFT_HEEL_STRIKE <-round(LEFT_HEEL_STRIKE, 5)
+  
+  
+  LEFT_TOE_OFF <- txt$LTO
+  LEFT_TOE_OFF<-na.omit(LEFT_TOE_OFF)
+  LEFT_TOE_OFF <-round(LEFT_TOE_OFF, 5)
+  
+  RIGHT_HEEL_STRIKE <- txt$RHS
+  RIGHT_HEEL_STRIKE<-na.omit(RIGHT_HEEL_STRIKE)
+  RIGHT_HEEL_STRIKE <-round(RIGHT_HEEL_STRIKE, 5)
+  
+  RIGHT_TOE_OFF <- txt$RTO
+  RIGHT_TOE_OFF<-na.omit(RIGHT_TOE_OFF)
+  RIGHT_TOE_OFF <-round(RIGHT_TOE_OFF, 5)
+  
+  #THIS IS THE START OF THE SECOND LOOP
+  
+  #MAKE SURE 1) FRAME NAME MATCHES ABOVE 2) EACH LOOP HAS ITS OWN LETTER 3) MAKE SURE YOU RENAME THE EVENT TEXT ("LHS" [EG LINE 135])
+      for(j in 1:length(LEFT_HEEL_STRIKE)){
+      #j <- 2
+      lhstrike <- LEFT_HEEL_STRIKE[j]
+      txt$events[txt$time == lhstrike] <- "LHS"
+      
+      }
+  
+      for(k in 1:length(LEFT_TOE_OFF)){
+      #j <- 2
+      ltoff <- LEFT_TOE_OFF[k]
+      txt$events[txt$time == ltoff] <- "LTO"
+      
+      }
+  
+      for(l in 1:length(RIGHT_HEEL_STRIKE)){
+      #j <- 2
+      rhstrike <- RIGHT_HEEL_STRIKE[l]
+      txt$events[txt$time == rhstrike] <- "RHS"
+      
+      }
+  
+      for(m in 1:length(RIGHT_TOE_OFF)){
+      #j <- 2
+      rtoff <- RIGHT_TOE_OFF[m]
+      txt$events[txt$time == rtoff] <- "RTO"
+      
+      }
+  
+  #assign(paste0("P4","Trial",txt_names[i]), txt, envir = .GlobalEnv)
+  assign(paste0("P2","S4","min",minact),txt, envir = .GlobalEnv)
+
+  P2SESSION4[[i]] <- txt
+   #return(listofdfs)
+ 
+}
+
+WGSP02_S4 <- rbind(P2S4min1,P2S4min2,P2S4min3,P2S4min4,P2S4min5,P2S4min6,P2S4min7,P2S4min8,P2S4min9,P2S4min10,P2S4min11,P2S4min12,P2S4min13,P2S4min14,P2S4min15,P2S4min16,P2S4min17,P2S4min18,P2S4min19,P2S4min20)
+
+WGSP02_S4 = subset(WGSP02_S4,select = -c(LHS,LTO,RHS,RTO))
+
+
+```
+
+#WGSPS2 Bind
+```{r}
+WGSP02_bind <- rbind(WGSP02_S1,WGSP02_S2,WGSP02_S3,WGSP02_S4)
+```
+
+
+#WGSP04
+##S1
+
+
+
+##S2
 ```{r}
 txt_dir <- list.dirs("C:\\Users\\thoma\\OneDrive - Murdoch University\\Desktop\\PhD 2021\\Study 2 and 3\\AAADATA\\Participants\\WGSP04\\Session2\\3D MOCAP\\Visual 3D\\")
 txt_files <- list.files(txt_dir)
@@ -131,6 +955,10 @@ for(i in 1:length(txt_files)){
 
 
 
+#Participant Bind
+```{r}
+WGS_3D_ParticipantBind <- rbind(WGSP01_bind,WGSP02_bind)
+```
 
 
 
